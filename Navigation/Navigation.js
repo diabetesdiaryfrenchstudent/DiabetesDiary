@@ -1,11 +1,17 @@
 // Navigation/Navigation.js
 
-import { createStackNavigator, createAppContainer  } from 'react-navigation'
+import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation'
 import WelcomePage from '../Components/WelcomePage'
 import Goals from '../Components/Goals'
+import Customization from '../Components/Customization'
+import Help from '../Components/Help'
+import PersonalDataTools from '../Components/PersonalDataTools'
+import Preferences from '../Components/Preferences'
+import MessageInbox from '../Components/MessageInbox'
+import About from '../Components/About'
 
-const SearchStackNavigator = createStackNavigator({
-  Search: {
+const WPStackNavigator = createStackNavigator({
+  WelcomePage: {
     screen: WelcomePage,
     navigationOptions: {
       title: 'Diabetes Diary'
@@ -14,9 +20,21 @@ const SearchStackNavigator = createStackNavigator({
   Goals: {
     screen: Goals,
     navigationOptions:{
-      title: 'Goals'
+      title: 'Your Goals'
     }
   }
 })
 
-export default createAppContainer(SearchStackNavigator)
+const DrawerNavigator = createDrawerNavigator({
+  WelcomePage: {screen: WPStackNavigator},
+  Help: {screen: Help},
+  Customization: {screen: Customization},
+  PersonalDataTools: {screen: PersonalDataTools},
+  Preferences: {screen: Preferences},
+  MessageInbox: {screen: MessageInbox},
+  About: {screen: About}
+},{
+  drawerPosition: 'right'
+})
+
+export default createAppContainer(DrawerNavigator)

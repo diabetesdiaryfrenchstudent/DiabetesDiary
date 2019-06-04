@@ -1,23 +1,14 @@
-// Components/WelcomePage.js
+// Components/PersonalDataTools.js
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
-class WelcomePage extends React.Component {
+class PersonalDataTools extends React.Component {
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
           <View style={styles.box}>
-            <Text>Display goals</Text>
-          </View>
-          <View style={styles.box}>
-            <Text>Display last data</Text>
-          </View>
-          <View style={styles.box}>
-            <Text>Display blood glucose levels</Text>
-          </View>
-          <View style={styles.box}>
-            <Text>Display blood glucose graph</Text>
+            <Text>We'll see later</Text>
           </View>
         </TouchableOpacity>
       )
@@ -37,4 +28,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default WelcomePage
+export default PersonalDataTools
