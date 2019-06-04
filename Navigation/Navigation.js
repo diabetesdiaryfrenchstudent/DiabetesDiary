@@ -1,6 +1,11 @@
 // Navigation/Navigation.js
-
+import React from 'react'
+import {View, Text, Image} from 'react-native'
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation'
+import { DrawerItems, DrawerNavigation } from 'react-navigation'
+
+import logo from '../Images/logo.png'
+
 import WelcomePage from '../Components/WelcomePage'
 import Goals from '../Components/Goals'
 import Customization from '../Components/Customization'
@@ -9,6 +14,7 @@ import PersonalDataTools from '../Components/PersonalDataTools'
 import Preferences from '../Components/Preferences'
 import MessageInbox from '../Components/MessageInbox'
 import About from '../Components/About'
+
 
 const WPStackNavigator = createStackNavigator({
   WelcomePage: {
@@ -25,6 +31,21 @@ const WPStackNavigator = createStackNavigator({
   }
 })
 
+const DrawerContent = (props) => (
+  <View>
+    <View style={{
+      height: 180,
+      backgroundColor: '#a0caec',
+      alignItems: 'center',
+      justifyContent: 'center',
+      }}>
+      <Image source={logo}/>
+      <Text style={{ marginTop:15, color: 'white', fontSize: 30 }}> Diabetes Diary </Text>
+    </View>
+
+  </View>
+)
+
 const DrawerNavigator = createDrawerNavigator({
   WelcomePage: {screen: WPStackNavigator},
   Help: {screen: Help},
@@ -34,7 +55,8 @@ const DrawerNavigator = createDrawerNavigator({
   MessageInbox: {screen: MessageInbox},
   About: {screen: About}
 },{
-  drawerPosition: 'right'
+  drawerPosition: 'right',
+  contentComponent: DrawerContent
 })
 
 export default createAppContainer(DrawerNavigator)
