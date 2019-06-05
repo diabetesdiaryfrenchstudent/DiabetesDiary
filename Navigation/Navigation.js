@@ -1,8 +1,9 @@
 // Navigation/Navigation.js
 import React from 'react'
-import {View, Text, Image, ScrollView} from 'react-native'
+import { TouchableOpacity, View, Text, Image, ScrollView, Button} from 'react-native'
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation'
 import { DrawerItems, DrawerNavigation } from 'react-navigation'
+import Icon from "react-native-vector-icons/Entypo"
 
 import logo from '../Images/logo.png'
 
@@ -15,12 +16,16 @@ import Preferences from '../Components/Preferences'
 import MessageInbox from '../Components/MessageInbox'
 import About from '../Components/About'
 
-
 const WPStackNavigator = createStackNavigator({
   WelcomePage: {
     screen: WelcomePage,
     navigationOptions: {
-      title: 'Diabetes Diary'
+      title: 'Diabetes Diary',
+      headerRight:
+        <Icon name='menu'
+        type='Entypo'
+        style={{ fontSize:30, marginRight: 15}}
+        onPress={() => this.props.navigation.navigate('DrawerOpen')}/>
     }
   },
   Goals: {
