@@ -2,11 +2,19 @@
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons';
-
-
+import Icon from "react-native-vector-icons/Entypo"
+import { DrawerActions } from 'react-navigation'
 
 class WelcomePage extends React.Component {
+  constructor(props){
+    super(props)
+      this._openMenu=this._openMenu.bind(this)
+  }
+  _openMenu(){
+      this.props.navigation.dispatch(DrawerActions.openDrawer());
+  }
+
+
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>

@@ -1,8 +1,8 @@
 // Navigation/Navigation.js
 import React from 'react'
 import { TouchableOpacity, View, Text, Image, ScrollView, Button} from 'react-native'
-import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation'
-import { DrawerItems, DrawerNavigation } from 'react-navigation'
+import { createStackNavigator, createAppContainer, createDrawerNavigator, withNavigation } from 'react-navigation'
+import { DrawerItems, DrawerNavigation, DrawerActions } from 'react-navigation'
 import Icon from "react-native-vector-icons/Entypo"
 
 import logo from '../Images/logo.png'
@@ -16,17 +16,19 @@ import Preferences from '../Components/Preferences'
 import MessageInbox from '../Components/MessageInbox'
 import About from '../Components/About'
 
+
 const WPStackNavigator = createStackNavigator({
-  WelcomePage: {
+    WelcomePage: {
     screen: WelcomePage,
-    navigationOptions: {
+    navigationOptions: props => ({
       title: 'Diabetes Diary',
       headerRight:
-        <Icon name='menu'
-        type='Entypo'
-        style={{ fontSize:30, marginRight: 15}}
-        onPress={() => this.props.navigation.navigate('DrawerOpen')}/>
-    }
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginRight: 15}}
+         onPress={() => props.navigation.openDrawer() }
+         />
+    })
   },
   Goals: {
     screen: Goals,
