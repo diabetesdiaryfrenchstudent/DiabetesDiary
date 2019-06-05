@@ -1,6 +1,6 @@
 // Navigation/Navigation.js
 import React from 'react'
-import {View, Text, Image} from 'react-native'
+import {View, Text, Image, ScrollView} from 'react-native'
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation'
 import { DrawerItems, DrawerNavigation } from 'react-navigation'
 
@@ -42,7 +42,9 @@ const DrawerContent = (props) => (
       <Image source={logo}/>
       <Text style={{ marginTop:15, color: 'white', fontSize: 30 }}> Diabetes Diary </Text>
     </View>
-
+    <ScrollView>
+      <DrawerItems {...props}/>
+    </ScrollView>
   </View>
 )
 
