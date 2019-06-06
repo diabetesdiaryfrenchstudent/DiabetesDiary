@@ -19,7 +19,7 @@ class Help extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: '#a0caec'
+    backgroundColor: 'rgb(221,234,242)',
   },
   box: {
     flex: 1,

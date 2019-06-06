@@ -6,6 +6,10 @@ import Icon from "react-native-vector-icons/Entypo"
 import { DrawerActions } from 'react-navigation'
 
 class WelcomePage extends React.Component {
+  static navigationOptions = {
+    title: 'Your Diabetes Diary',
+  }
+
   constructor(props){
     super(props)
       this._openMenu=this._openMenu.bind(this)
@@ -39,7 +43,7 @@ class WelcomePage extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: '#a0caec'
+    backgroundColor: 'rgb(221,234,242)'
   },
   box: {
     flex: 1,

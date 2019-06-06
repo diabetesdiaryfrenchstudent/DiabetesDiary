@@ -4,6 +4,9 @@ import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
 class PersonalDataTools extends React.Component {
+  static navigationOptions = {
+    title: 'Personal Data Tools',
+  }
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
@@ -19,7 +22,7 @@ class PersonalDataTools extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: '#a0caec'
+    backgroundColor: 'rgb(221,234,242)',
   },
   box: {
     flex: 1,
