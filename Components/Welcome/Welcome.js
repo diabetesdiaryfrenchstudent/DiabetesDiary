@@ -6,8 +6,6 @@ import AutoHeightImage from 'react-native-auto-height-image';
 import nse from '../../Images/nse.png'
 
 class Welcome extends React.Component{
-
-
   render(){
 
     return(
@@ -29,14 +27,18 @@ class Welcome extends React.Component{
           width={Dimensions.get('window').width}
           source={nse}
         />
-      <Button style={styles.button} title='ACCEPT' onPress={() =>{}}/>
+      <Button style={styles.button} title='ACCEPT' onPress={() => this._nextScreen()}/>
     </ScrollView>
   )}
+
+
+  _nextScreen = () => {
+    this.props.navigation.navigate("Sexe")
+  }
+
+
 }
-const imgSize ={
-  width: this.width,
-  height: this.height
-}
+
 const styles = StyleSheet.create({
   main_container:{
     flex:1,
