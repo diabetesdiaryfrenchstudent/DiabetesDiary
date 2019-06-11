@@ -2,7 +2,7 @@ import React from 'react'
 import {StyleSheet, ScrollView, Button, Text,Image,View,Dimensions} from 'react-native'
 import text from './text'
 import AutoHeightImage from 'react-native-auto-height-image';
-
+import styles from './Styles'
 import nse from '../../Images/nse.png'
 
 class Welcome extends React.Component{
@@ -10,19 +10,19 @@ class Welcome extends React.Component{
 
     return(
     <ScrollView style={styles.main_container}>
-      <View style={styles.header}>
-      <Image style={styles.imageApp}
+      <View style={stylesP.header}>
+      <Image style={stylesP.imageApp}
         source={require('../../Images/icon.png')}/>
 
-      <Text style={styles.main_title}>{text.main_title}</Text>
+      <Text style={stylesP.main_title}>{text.main_title}</Text>
       </View>
-      <Text style={styles.title_2}>{text.responsibility_title}</Text>
-      <Text style={styles.content}>{text.responsibility_content}</Text>
-      <Text style={styles.title_2}>{text.data_title}</Text>
-      <Text style={styles.content}>{text.data_content}</Text>
-      <Text style={styles.title_2}>{text.understand_title}</Text>
-      <Text style={styles.content}>{text.endText}</Text>
-      <Text style={styles.content}>{text.pressOk}</Text>
+      <Text style={stylesP.title_2}>{text.responsibility_title}</Text>
+      <Text style={stylesP.content}>{text.responsibility_content}</Text>
+      <Text style={stylesP.title_2}>{text.data_title}</Text>
+      <Text style={stylesP.content}>{text.data_content}</Text>
+      <Text style={stylesP.title_2}>{text.understand_title}</Text>
+      <Text style={stylesP.content}>{text.endText}</Text>
+      <Text style={stylesP.content}>{text.pressOk}</Text>
       <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
           width={Dimensions.get('window').width}
           source={nse}
@@ -39,12 +39,8 @@ class Welcome extends React.Component{
 
 }
 
-const styles = StyleSheet.create({
-  main_container:{
-    flex:1,
+const stylesP = StyleSheet.create({
 
-    backgroundColor:'#DDEAF2',
-  },
   header:{
     flex:1,
     flexDirection:'row',
