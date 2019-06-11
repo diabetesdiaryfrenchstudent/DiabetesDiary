@@ -24,12 +24,12 @@ class Type extends React.Component{
       </View>
     )
   }
-
-
-
   _Click(type){
       const action = {type: "TOGGLE_TYPE", value: type}
+      //Send to the store the value and the type of action
       this.props.dispatch(action)
+
+      //AS it's the last action, we reset the stack in order to prevent user to go back
       this.props.navigation.dispatch(resetAction);
   }
 }
@@ -66,11 +66,15 @@ const styles = StyleSheet.create({
   }
 })
 
+
+//Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
     param: state
   }
 }
+
+//Constante for reset the stack
 const resetAction = StackActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: 'Recap' })],

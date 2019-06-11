@@ -1,71 +1,67 @@
 import React from 'react'
-import {StyleSheet, View,Text,Button,TouchableOpacity} from 'react-native'
+import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native'
 import text from './text'
 import { connect } from 'react-redux'
 
-class Sexe extends React.Component{
-  render(){
-    console.log(this.props)
-    return(
+class Sexe extends React.Component {
+  render() {
+    return (
       <View style={styles.main_container}>
-      <View style={styles.bulle}>
-        <Text style={styles.h2}>{text.hi}</Text>
-        <Text style={styles.content}>{text.welcome}</Text>
-        <View style= {styles.button_container}>
-            <TouchableOpacity style={styles.button} title='Man' onPress={() =>this._manClick()}>
+        <View style={styles.bulle}>
+          <Text style={styles.h2}>{text.hi}</Text>
+          <Text style={styles.content}>{text.welcome}</Text>
+          <View style={styles.button_container}>
+            //Button to choose sex
+            <TouchableOpacity style={styles.button} title='Man' onPress={() => this._Click("M")}>
               <Text style={styles.text_button}>Man</Text>
             </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button} title='Woman' onPress={() =>this._womanClick()}>
+            //Button to choose sex
+            <TouchableOpacity style={styles.button} title='Woman' onPress={() => this._Click("F")}>
               <Text style={styles.text_button}>Woman</Text>
             </TouchableOpacity>
+          </View>
         </View>
-      </View>
       </View>
     )
   }
 
-  _manClick(){
-    const action = {type: "TOGGLE_SEXE", value: "M"}
+  //Action when user choose his sex
+  _Click(sexe) {
+    const action = { type: "TOGGLE_SEXE", value: sexe }
+    //Send to the store the value and the type of action
     this.props.dispatch(action)
-    if(this.props.param.endInit){
+
+    //Check if the initialization is over
+    if (this.props.param.endInit) {
       this.props.navigation.navigate("Recap")
-    }else{
+    } else {
       this.props.navigation.navigate("Color")
     }
 
   }
-
-  _womanClick(){
-      const action = {type: "TOGGLE_SEXE", value: "W"}
-      this.props.dispatch(action)
-      if(this.props.param.endInit){
-        this.props.navigation.navigate("Recap")
-      }else{
-        this.props.navigation.navigate("Color")
-      }
-  }
 }
+
+
 const styles = StyleSheet.create({
-  main_container:{
-    flex:1,
-    backgroundColor:'#DDEAF2'
+  main_container: {
+    flex: 1,
+    backgroundColor: '#DDEAF2'
   },
-  bulle:{
+  bulle: {
 
   },
-  h2:{
-    fontSize:20,
+  h2: {
+    fontSize: 20,
   },
-  content:{
+  content: {
 
   },
-  button_container:{
-    flexDirection:'row',
+  button_container: {
+    flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 25,
   },
-  button:{
+  button: {
     width: 100,
     height: 50,
     backgroundColor: '#5057E1',
@@ -73,12 +69,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text_button :{
+  text_button: {
 
     color: '#FFFFFF'
   }
 })
 
+
+//Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
     param: state

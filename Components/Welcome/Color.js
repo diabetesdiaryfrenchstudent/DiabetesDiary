@@ -10,10 +10,12 @@ class Color extends React.Component{
       <View style={styles.bulle}>
         <Text style={styles.content}>{text.color}</Text>
         <View style= {styles.button_container}>
+            //Button to choose color
             <TouchableOpacity style={styles.button} title='Blue' onPress={() =>this._Click("blue")}>
               <Text style={styles.text_button}>Blue</Text>
             </TouchableOpacity>
 
+            //Button to choose color
             <TouchableOpacity style={styles.button} title='Red' onPress={() =>this._Click("red")}>
               <Text style={styles.text_button}>Red</Text>
             </TouchableOpacity>
@@ -25,6 +27,10 @@ class Color extends React.Component{
 
   _Click(color){
     const action = {type: "TOGGLE_COLOR", value: color}
+    //Send to the store the value and the type of action
+    this.props.dispatch(action)
+
+    //Check if the initialization is over
     if(this.props.param.endInit){
       this.props.navigation.navigate("Recap")
     }else{
@@ -67,6 +73,7 @@ const styles = StyleSheet.create({
   }
 })
 
+//Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
     param: state

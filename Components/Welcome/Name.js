@@ -6,12 +6,16 @@ import { connect } from 'react-redux'
 class Name extends React.Component{
   constructor(props){
     super(props)
-    searchedText="";
+    nameText="";
   }
 
-  _searchTextInputChanged(text){
-    this.searchedText=text
+
+  //Method which update at each new input the name.
+  _nameTextInputChanged(text){
+    this.nameText=text
   }
+
+
   render(){
     return(
       <View style={styles.main_container}>
@@ -20,8 +24,8 @@ class Name extends React.Component{
         <TextInput
           style={styles.textinput}
           placeholder='Name'
-          onChangeText={(text)=>this._searchTextInputChanged(text)}
-          onSubmitEditing={() => this._buttonClick()}
+          onChangeText={(text)=>this._nameTextInputChanged(text)}
+          onSubmitEditing={() => this._buttonClick()}//Possibility to click on OK on the keyboard
         />
         <Button title='Ok' onPress={() => this._buttonClick()}/>
       </View>
@@ -29,9 +33,13 @@ class Name extends React.Component{
     )
   }
 
+  //Action for the button OK
   _buttonClick(){
-    const action = {type: "TOGGLE_NAME", value: this.searchedText}
+    const action = {type: "TOGGLE_NAME", value: this.nameText}
+    //Send to the store the value and the type of action
     this.props.dispatch(action)
+
+    //Check if the initialization is over
     if(this.props.param.endInit){
       this.props.navigation.navigate("Recap")
     }else{
@@ -73,6 +81,8 @@ const styles = StyleSheet.create({
   }
 })
 
+
+//Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
     param: state

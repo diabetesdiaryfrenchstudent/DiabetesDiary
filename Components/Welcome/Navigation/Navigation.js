@@ -7,40 +7,40 @@ import Type from '../Type'
 import Recap from '../Recap'
 
 const WelcomeStackNavigator = createStackNavigator({
-  Welcome: { // Ici j'ai appelé la vue "Search" mais on peut mettre ce que l'on veut. C'est le nom qu'on utilisera pour appeler cette vue
+  Welcome: { //First screen of the application
     screen: Welcome,
     navigationOptions: {
       title: 'Welcome'
     }
   },
-  Sexe: {
+  Sexe: { //Screen to choose sex
     screen: Sexe,
     navigationOptions:{
-      title: 'Sexe'
+      title: 'Sex'
     }
   },
-  Color:{
+  Color:{ //Screen to choose the color of the application
     screen: Color,
     navigationOptions:{
       title:'Color'
     }
   },
-  Name:{
+  Name:{ //Screen to choose the name
     screen: Name,
     navigationOptions:{
       title: 'Name'
     }
   },
-  Type:{
+  Type:{ //Screen to choose the type of diabetes
     screen: Type,
     navigationOptions:{
       title: 'Type'
     }
   },
-  Recap:{
+  Recap:{ //Screen with summary
     screen: Recap,
     navigationOptions:{
-      title: 'Recap'
+      title: 'Summary'
     }
   }
 })
