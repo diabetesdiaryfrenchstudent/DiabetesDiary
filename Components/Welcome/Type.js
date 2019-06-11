@@ -15,7 +15,6 @@ class Type extends React.Component{
             <TouchableOpacity style={styles.button} title='Type 1' onPress={() =>this._Click("1")}>
               <Text style={styles.text_button}>Type 1</Text>
             </TouchableOpacity>
-
             <TouchableOpacity style={styles.button} title='Type 2' onPress={() =>this._Click("2")}>
               <Text style={styles.text_button}>Type 2</Text>
             </TouchableOpacity>

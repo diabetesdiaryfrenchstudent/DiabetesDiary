@@ -11,11 +11,9 @@ class Sexe extends React.Component {
           <Text style={styles.h2}>{text.hi}</Text>
           <Text style={styles.content}>{text.welcome}</Text>
           <View style={styles.button_container}>
-            //Button to choose sex
             <TouchableOpacity style={styles.button} title='Man' onPress={() => this._Click("M")}>
               <Text style={styles.text_button}>Man</Text>
             </TouchableOpacity>
-            //Button to choose sex
             <TouchableOpacity style={styles.button} title='Woman' onPress={() => this._Click("F")}>
               <Text style={styles.text_button}>Woman</Text>
             </TouchableOpacity>

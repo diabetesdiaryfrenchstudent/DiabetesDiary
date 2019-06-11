@@ -10,12 +10,9 @@ class Color extends React.Component{
       <View style={styles.bulle}>
         <Text style={styles.content}>{text.color}</Text>
         <View style= {styles.button_container}>
-            //Button to choose color
             <TouchableOpacity style={styles.button} title='Blue' onPress={() =>this._Click("blue")}>
               <Text style={styles.text_button}>Blue</Text>
             </TouchableOpacity>
-
-            //Button to choose color
             <TouchableOpacity style={styles.button} title='Red' onPress={() =>this._Click("red")}>
               <Text style={styles.text_button}>Red</Text>
             </TouchableOpacity>

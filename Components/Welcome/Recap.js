@@ -20,7 +20,6 @@ class Recap extends React.Component{
     return(
       <View style={styles.main_container}>
       <View style={styles.bulle}>
-      //Buttons to modify informations
       <TouchableOpacity onPress={() =>this._sexeScreen()}>
         <Text style={styles.h2}>Sexe : {this.props.param.sexe}</Text>
       </TouchableOpacity>
