@@ -10,6 +10,7 @@ class Welcome extends React.Component{
 
     return(
     <ScrollView style={styles.main_container}>
+    <View style={stylesP.container}>
       <View style={stylesP.header}>
       <Image style={stylesP.imageApp}
         source={require('../../Images/icon.png')}/>
@@ -23,11 +24,14 @@ class Welcome extends React.Component{
       <Text style={stylesP.title_2}>{text.understand_title}</Text>
       <Text style={stylesP.content}>{text.endText}</Text>
       <Text style={stylesP.content}>{text.pressOk}</Text>
+      <View style={stylesP.imgNSE}>
       <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
           width={Dimensions.get('window').width}
           source={nse}
         />
+        </View>
       <Button style={styles.button} title='ACCEPT' onPress={() => this._nextScreen()}/>
+      </View>
     </ScrollView>
   )}
 
@@ -66,8 +70,13 @@ const stylesP = StyleSheet.create({
     fontSize: 15,
   },
   button:{
-    marginTop:10,
-    paddingTop:20
+    margin :10,
+  },
+  imgNSE:{
+    marginBottom: 10,
+  },
+  container:{
+    marginBottom: 10,
   }
 
 })

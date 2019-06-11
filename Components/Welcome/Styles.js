@@ -1,10 +1,10 @@
 import React, {StyleSheet} from 'react-native'
-
-export default StyleSheet.create({
+import { connect } from 'react-redux'
+const styles= StyleSheet.create({
 
   main_container:{
     flex:1,
-
+    paddingHorizontal: 10,
     backgroundColor:'#DDEAF2',
   },
   bulle:{
@@ -24,8 +24,15 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   text_button :{
-
     color: '#FFFFFF'
   }
 }
 );
+
+const mapStateToProps = (state) => {
+  return {
+    param: state.color
+  }
+}
+
+export default connect(mapStateToProps)(styles)
