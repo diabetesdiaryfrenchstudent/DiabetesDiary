@@ -1,10 +1,10 @@
 // Navigation/Navigation.js
 import React, {Component} from 'react'
-import { TouchableOpacity, View, Text, Image, ScrollView, Button, Modal, TouchableHighlight, Alert} from 'react-native'
+import { TouchableOpacity, View, Text, Image, ScrollView, Button, TouchableHighlight} from 'react-native'
 import { createStackNavigator, createAppContainer, createDrawerNavigator, withNavigation } from 'react-navigation'
 import { DrawerItems, DrawerNavigation, DrawerActions } from 'react-navigation'
 import Icon from "react-native-vector-icons/Entypo"
-//import Dialog, { DialogContent }, { DialogFooter, DialogTitle, DialogButton, DialogContent } from 'react-native-popup-dialog'
+import Modal from 'react-native-modal';
 
 import logo from '../Images/logo.png'
 
@@ -17,6 +17,11 @@ import Preferences from '../Components/Preferences'
 import MessageInbox from '../Components/MessageInbox'
 import About from '../Components/About'
 import DataStorageInfo from  '../Components/DataStorageInfo'
+import LastData from  '../Components/LastData'
+import BloodGlucoseGraph from  '../Components/BloodGlucoseGraph'
+import BloodGlucoseLevel from  '../Components/BloodGlucoseLevel'
+
+
 
 const WPStackNavigator = createStackNavigator({
     WelcomePage: {
@@ -28,12 +33,12 @@ const WPStackNavigator = createStackNavigator({
          type='Entypo'
          style={{ fontSize:30, marginLeft: 15}}
          onPress={() => props.navigation.openDrawer() }
-         />,
+        />,
       headerRight:
         <Icon name='dots-three-horizontal'
         type='Entypo'
         style={{ fontSize:25, marginRight: 15}}
-        //onPress={() => this.setModalVisible() }
+        onPress={() => { _renderModalContent() }}
         />
 
     })
@@ -41,9 +46,15 @@ const WPStackNavigator = createStackNavigator({
   Goals: {
     screen: Goals,
     navigationOptions:{title: 'Goals'}
-  },  Goals: {
-    screen: Goals,
-    navigationOptions:{title: 'Goals'}
+  },  LastData: {
+    screen: LastData,
+    navigationOptions:{title: 'Last Data'}
+  },  BloodGlucoseGraph: {
+    screen: BloodGlucoseGraph,
+    navigationOptions:{title: 'Blood Glucose Graph'}
+  },  BloodGlucoseLevel: {
+    screen: BloodGlucoseLevel,
+    navigationOptions:{title: 'Blood Glucose Level'}
   },  Help: {
     screen: Help,
     navigationOptions:{title: 'Help'}
@@ -52,13 +63,13 @@ const WPStackNavigator = createStackNavigator({
     navigationOptions:{title: 'Customization'}
   },  PersonalDataTools: {
     screen: PersonalDataTools,
-    navigationOptions:{title: 'PersonalDataTools'}
+    navigationOptions:{title: 'Personal Data Tools'}
   },  Preferences: {
     screen: Preferences,
     navigationOptions:{title: 'Preferences'}
   },  MessageInbox: {
     screen: MessageInbox,
-    navigationOptions:{title: 'MessageInbox'}
+    navigationOptions:{title: 'Message Inbox'}
   },  About: {
     screen: About,
     navigationOptions:{title: 'About'}
@@ -87,12 +98,10 @@ const DrawerContent = (props) => (
 
 const DrawerNavigator = createDrawerNavigator({
   WelcomePage: {screen: WPStackNavigator},
-  Help: {screen: Help},
-  Customization: {screen: Customization},
-  PersonalDataTools: {screen: PersonalDataTools},
-  Preferences: {screen: Preferences},
-  MessageInbox: {screen: MessageInbox},
-  About: {screen: About}
+  Goals: {screen: Goals},
+  LastData: {screen: LastData},
+  BloodGlucoseLevel: {screen: BloodGlucoseLevel},
+  BloodGlucoseGraph: {screen: BloodGlucoseGraph}
 },{
   contentComponent: DrawerContent
 })
