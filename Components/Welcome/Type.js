@@ -8,7 +8,7 @@ import styles from './Styles'
 class Type extends React.Component{
   render(){
     return(
-      <View style={styles.main_container}>
+      <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
       <View style={styles.bulle}>
         <Text style={stylesP.h2}>{text.nice}</Text>
         <Text style={styles.content}>{text.type}</Text>

@@ -1,6 +1,6 @@
 import React, {StyleSheet} from 'react-native'
-import { connect } from 'react-redux'
-const styles= StyleSheet.create({
+
+export default StyleSheet.create({
 
   main_container:{
     flex:1,
@@ -28,11 +28,3 @@ const styles= StyleSheet.create({
   }
 }
 );
-
-const mapStateToProps = (state) => {
-  return {
-    param: state.color
-  }
-}
-
-export default connect(mapStateToProps)(styles)

@@ -77,7 +77,7 @@ class Name extends React.Component{
     let { errors = {}, ...data } = this.state;
     let { firstname = 'name'} = data;
     return(
-      <View style={styles.main_container}>
+      <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
       <View style={styles.bulle}>
         <Text style={styles.content}>{text.name}</Text>
         <TextField

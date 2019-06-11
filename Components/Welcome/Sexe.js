@@ -7,7 +7,7 @@ import styles from './Styles'
 class Sexe extends React.Component {
   render() {
     return (
-      <View style={styles.main_container}>
+      <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
         <View style={styles.bulle}>
           <Text style={stylesP.h2}>{text.hi}</Text>
           <Text style={styles.content}>{text.welcome}</Text>

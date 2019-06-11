@@ -18,7 +18,7 @@ class Recap extends React.Component{
       sexe="Homme"
     }
     return(
-      <View style={styles.main_container}>
+      <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
       <View style={styles.bulle}>
       <TouchableOpacity onPress={() =>this._sexeScreen()}>
         <Text style={stylesP.h2}>Sexe : {this.props.param.sexe}</Text>

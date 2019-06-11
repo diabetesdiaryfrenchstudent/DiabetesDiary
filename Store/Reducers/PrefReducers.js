@@ -1,6 +1,6 @@
 const initialState = {
   sexe: "",
-  color: "blue",
+  color: "#DDEAF2",
   name: "",
   data: "",
   type: "",

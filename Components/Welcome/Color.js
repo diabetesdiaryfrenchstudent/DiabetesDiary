@@ -7,14 +7,14 @@ import styles from './Styles'
 class Color extends React.Component{
   render(){
     return(
-      <View style={styles.main_container}>
+      <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
       <View style={styles.bulle}>
         <Text style={styles.content}>{text.color}</Text>
         <View style= {styles.button_container}>
-            <TouchableOpacity style={styles.button} title='Blue' onPress={() =>this._Click("blue")}>
+            <TouchableOpacity style={styles.button} title='Blue' onPress={() =>this._Click("#DDEAF2")}>
               <Text style={styles.text_button}>Blue</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} title='Red' onPress={() =>this._Click("red")}>
+            <TouchableOpacity style={styles.button} title='Red' onPress={() =>this._Click("#FF7A7A")}>
               <Text style={styles.text_button}>Red</Text>
             </TouchableOpacity>
         </View>
