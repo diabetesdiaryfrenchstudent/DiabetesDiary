@@ -1,27 +1,32 @@
 const initialState = {
-  sexe:"NO",
-  color:"blue"
+
+    sexe:"",
+    color:"blue",
+    name:"",
+    data:"",
+    type:"",
+    endInit:false
+
+
+
 }
 
 function prefReducers(state=initialState,action){
   let nextState
   switch (action.type) {
     case 'TOGGLE_SEXE':
-
       nextState = {
         ...state,
         sexe:action.value
       }
       return nextState|| state
-      break;
       case 'TOGGLE_COLOR':
 
         nextState = {
           ...state,
-          color:action.value
+        color:action.value
         }
         return nextState|| state
-        break;
         case 'TOGGLE_NAME':
 
           nextState = {
@@ -29,15 +34,14 @@ function prefReducers(state=initialState,action){
             name:action.value
           }
           return nextState|| state
-          break;
           case 'TOGGLE_TYPE':
 
             nextState = {
               ...state,
-              type:action.value
+              type:action.value,
+              endInit:true
             }
             return nextState|| state
-            break;
             case 'TOGGLE_DATA':
 
               nextState = {
@@ -45,7 +49,6 @@ function prefReducers(state=initialState,action){
                 data:action.value
               }
               return nextState|| state
-              break;
     default:
     return nextState ||state
 

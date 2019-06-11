@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 class Sexe extends React.Component{
   render(){
+    console.log(this.props)
     return(
       <View style={styles.main_container}>
       <View style={styles.bulle}>
@@ -27,13 +28,22 @@ class Sexe extends React.Component{
   _manClick(){
     const action = {type: "TOGGLE_SEXE", value: "M"}
     this.props.dispatch(action)
-    this.props.navigation.navigate("Color")
+    if(this.props.param.endInit){
+      this.props.navigation.navigate("Recap")
+    }else{
+      this.props.navigation.navigate("Color")
+    }
+
   }
 
   _womanClick(){
-      const action = {type: "TOGGLE_SEXE", value: "F"}
+      const action = {type: "TOGGLE_SEXE", value: "W"}
       this.props.dispatch(action)
-      this.props.navigation.navigate("Color")
+      if(this.props.param.endInit){
+        this.props.navigation.navigate("Recap")
+      }else{
+        this.props.navigation.navigate("Color")
+      }
   }
 }
 const styles = StyleSheet.create({
@@ -69,10 +79,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    dispatch: (action) => { dispatch(action) }
+    param: state
   }
 }
 
-export default connect(mapDispatchToProps)(Sexe)
+export default connect(mapStateToProps)(Sexe)

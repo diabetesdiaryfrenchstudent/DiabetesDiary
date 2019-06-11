@@ -32,7 +32,11 @@ class Name extends React.Component{
   _buttonClick(){
     const action = {type: "TOGGLE_NAME", value: this.searchedText}
     this.props.dispatch(action)
-    this.props.navigation.navigate("Type")
+    if(this.props.param.endInit){
+      this.props.navigation.navigate("Recap")
+    }else{
+      this.props.navigation.navigate("Type")
+    }
   }
 
 }
@@ -69,10 +73,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    dispatch: (action) => { dispatch(action) }
+    param: state
   }
 }
 
-export default connect(mapDispatchToProps)(Name)
+export default connect(mapStateToProps)(Name)

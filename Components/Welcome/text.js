@@ -13,4 +13,6 @@ export default text = {
   name:"It looks better now! How do you want to be called?",
   nice:"Nice to meet you ",
   type:"What type of diabetes do you have",
+  sexm: "Man",
+  sexf:"Woman"
 }

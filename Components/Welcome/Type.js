@@ -2,6 +2,7 @@ import React from 'react'
 import {StyleSheet, View,Text,Button,TouchableOpacity} from 'react-native'
 import text from './text'
 import { connect } from 'react-redux'
+import { StackActions, NavigationActions } from 'react-navigation';
 
 class Type extends React.Component{
   render(){
@@ -11,11 +12,11 @@ class Type extends React.Component{
         <Text style={styles.h2}>{text.nice}</Text>
         <Text style={styles.content}>{text.type}</Text>
         <View style= {styles.button_container}>
-            <TouchableOpacity style={styles.button} title='Type 1' onPress={() =>this._type1Click()}>
+            <TouchableOpacity style={styles.button} title='Type 1' onPress={() =>this._Click("1")}>
               <Text style={styles.text_button}>Type 1</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} title='Type 2' onPress={() =>this._type2Click()}>
+            <TouchableOpacity style={styles.button} title='Type 2' onPress={() =>this._Click("2")}>
               <Text style={styles.text_button}>Type 2</Text>
             </TouchableOpacity>
         </View>
@@ -24,16 +25,12 @@ class Type extends React.Component{
     )
   }
 
-  _type1Click(){
-    const action = {type: "TOGGLE_TYPE", value: "1"}
-    this.props.dispatch(action)
-    //this.props.navigation.navigate("Color")
-  }
 
-  _type2Click(){
-      const action = {type: "TOGGLE_TYPE", value: "2"}
+
+  _Click(type){
+      const action = {type: "TOGGLE_TYPE", value: type}
       this.props.dispatch(action)
-      //this.props.navigation.navigate("Color")
+      this.props.navigation.dispatch(resetAction);
   }
 }
 const styles = StyleSheet.create({
@@ -69,10 +66,15 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    dispatch: (action) => { dispatch(action) }
+    param: state
   }
 }
+const resetAction = StackActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'Recap' })],
+});
 
-export default connect(mapDispatchToProps)(Type)
+
+export default connect(mapStateToProps)(Type)

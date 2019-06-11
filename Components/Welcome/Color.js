@@ -10,11 +10,11 @@ class Color extends React.Component{
       <View style={styles.bulle}>
         <Text style={styles.content}>{text.color}</Text>
         <View style= {styles.button_container}>
-            <TouchableOpacity style={styles.button} title='Blue' onPress={() =>this._blueClick()}>
+            <TouchableOpacity style={styles.button} title='Blue' onPress={() =>this._Click("blue")}>
               <Text style={styles.text_button}>Blue</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} title='Red' onPress={() =>this._redClick()}>
+            <TouchableOpacity style={styles.button} title='Red' onPress={() =>this._Click("red")}>
               <Text style={styles.text_button}>Red</Text>
             </TouchableOpacity>
         </View>
@@ -23,17 +23,16 @@ class Color extends React.Component{
     )
   }
 
-  _redClick(){
-    const action = {type: "TOGGLE_COLOR", value: "blue"}
-    this.props.dispatch(action)
-    this.props.navigation.navigate("Name")
+  _Click(color){
+    const action = {type: "TOGGLE_COLOR", value: color}
+    if(this.props.param.endInit){
+      this.props.navigation.navigate("Recap")
+    }else{
+      this.props.navigation.navigate("Name")
+    }
   }
 
-  _blueClick(){
-      const action = {type: "TOGGLE_COLOR", value: "red"}
-      this.props.dispatch(action)
-      this.props.navigation.navigate("Name")
-  }
+
 }
 const styles = StyleSheet.create({
   main_container:{
@@ -68,10 +67,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    dispatch: (action) => { dispatch(action) }
+    param: state
   }
 }
 
-export default connect(mapDispatchToProps)(Color)
+export default connect(mapStateToProps)(Color)
