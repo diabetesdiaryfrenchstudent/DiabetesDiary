@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import { StackActions, NavigationActions } from 'react-navigation';
 import styles from './Styles'
 import AutoHeightImage from 'react-native-auto-height-image';
-import guy from '../../Images/M_type.png'
+import guy from '../../Images/People/M_type.png'
+import woman from '../../Images/People/W_type.png'
 
 class Type extends React.Component{
   render(){
@@ -25,14 +26,30 @@ class Type extends React.Component{
         </View>
       </View>
       <View style={styles.guy}>
-      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
-          width={215}
-          source={guy}
-        />
+      {this._displayDoctor()}
         </View>
       </ImageBackground>
       </View>
     )
+  }
+
+  _displayDoctor(){
+    if(this.props.param.sexe==="F"){
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={175}
+            source={woman}
+          />
+      )
+    }
+    else{
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={215}
+            source={guy}
+          />
+      )
+    }
   }
   _Click(type){
       const action = {type: "TOGGLE_TYPE", value: type}

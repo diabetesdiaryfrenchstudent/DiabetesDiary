@@ -4,7 +4,8 @@ import text from './text'
 import { connect } from 'react-redux'
 import styles from './Styles'
 import AutoHeightImage from 'react-native-auto-height-image';
-import guy from '../../Images/M_sexe.png'
+import guy from '../../Images/People/M_sexe.png'
+import woman from '../../Images/People/W_sexe.png'
 
 class Sexe extends React.Component {
   render() {
@@ -24,14 +25,30 @@ class Sexe extends React.Component {
           </View>
         </View>
         <View style={styles.guy}>
-        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
-            width={225}
-            source={guy}
-          />
+        {this._displayDoctor()}
           </View>
         </ImageBackground>
       </View>
     )
+  }
+
+  _displayDoctor(){
+    if(this.props.param.sexe==="F"){
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={175}
+            source={woman}
+          />
+      )
+    }
+    else{
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={225}
+            source={guy}
+          />
+      )
+    }
   }
 
   //Action when user choose his sex

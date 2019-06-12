@@ -4,7 +4,8 @@ import text from './text'
 import { connect } from 'react-redux'
 import styles from './Styles'
 import AutoHeightImage from 'react-native-auto-height-image';
-import guy from '../../Images/M_color.png'
+import guy from '../../Images/People/M_color.png'
+import woman from '../../Images/People/W_color.png'
 
 class Color extends React.Component{
   render(){
@@ -24,16 +25,31 @@ class Color extends React.Component{
         </View>
       </View>
       <View style={styles.guy}>
-      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
-          width={205}
-          source={guy}
-        />
+      {this._displayDoctor()}
         </View>
       </ImageBackground>
       </View>
     )
   }
-
+  _displayDoctor(){
+    if(this.props.param.sexe==="F"){
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={150}
+            source={woman}
+            style={{marginRight:20}}
+          />
+      )
+    }
+    else{
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={205}
+            source={guy}
+          />
+      )
+    }
+  }
   _Click(color){
     const action = {type: "TOGGLE_COLOR", value: color}
     //Send to the store the value and the type of action

@@ -5,8 +5,8 @@ import { TextField } from 'react-native-material-textfield';
 import { connect } from 'react-redux'
 import styles from './Styles'
 import AutoHeightImage from 'react-native-auto-height-image';
-import guy from '../../Images/M_name.png'
-
+import guy from '../../Images/People/M_name.png'
+import woman from '../../Images/People/W_name.png'
 class Name extends React.Component{
   constructor(props){
     super(props)
@@ -98,10 +98,7 @@ class Name extends React.Component{
         <Button title='Ok' onPress={() => this.onSubmit()}/>
       </View>
       <View style={styles.guy}>
-      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
-          width={215}
-          source={guy}
-        />
+      {this._displayDoctor()}
         </View>
       </ImageBackground>
       </View>
@@ -115,6 +112,25 @@ class Name extends React.Component{
     if(nameText=""){
       errors.name='Should not be empty'
     }
+}
+
+_displayDoctor(){
+  if(this.props.param.sexe==="F"){
+    return(
+      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+          width={180}
+          source={woman}
+        />
+    )
+  }
+  else{
+    return(
+      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+          width={215}
+          source={guy}
+        />
+    )
+  }
 }
 
 }

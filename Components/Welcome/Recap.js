@@ -4,12 +4,14 @@ import text from './text'
 import { connect } from 'react-redux'
 import styles from './Styles'
 import AutoHeightImage from 'react-native-auto-height-image';
-import guy from '../../Images/M_recap.png'
+import guy from '../../Images/People/M_recap.png'
+import woman from '../../Images/People/W_recap.png'
 
 class Recap extends React.Component{
   constructor(props){
     super(props)
     const sexe=""
+
     if(this.props.param.sexe==="F"){
       this.sexe="Woman"
     }
@@ -18,7 +20,7 @@ class Recap extends React.Component{
     }
 
   }
-  
+
 
   render(){
     //Ceci est un test
@@ -47,16 +49,32 @@ class Recap extends React.Component{
           <Button title='Valider' onPress={() => this._buttonClick()}/>
       </View>
       <View style={styles.guy}>
-      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
-          width={200}
-          source={guy}
-        />
+      {this._displayDoctor()}
         </View>
       </ImageBackground>
 
 
       </View>
     )
+  }
+
+  _displayDoctor(){
+    if(this.props.param.sexe==="F"){
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={180}
+            source={woman}
+          />
+      )
+    }
+    else{
+      return(
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={200}
+            source={guy}
+          />
+      )
+    }
   }
 
   _buttonClick = () =>{
