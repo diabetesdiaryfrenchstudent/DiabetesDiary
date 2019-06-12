@@ -3,6 +3,8 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
+import styles from '../Tools/Styles'
+
 class Help extends React.Component {
   render() {
       return (
@@ -15,17 +17,5 @@ class Help extends React.Component {
   }
 }
 
-
-const styles = StyleSheet.create({
-  main_container: {
-    flex: 1,
-    backgroundColor: 'rgb(221,234,242)',
-  },
-  box: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    marginTop: 10
-  }
-})
 
 export default Help

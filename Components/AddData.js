@@ -1,13 +1,13 @@
-// Components/LastData.js
+// Components/AddData.js
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
 import styles from '../Tools/Styles'
 
-class LastData extends React.Component {
+class AddData extends React.Component {
   static navigationOptions = {
-    title: 'Last Data',
+    title: 'AddData',
   }
   render() {
       return (
@@ -20,5 +20,4 @@ class LastData extends React.Component {
   }
 }
 
-
-export default LastData
+export default AddData

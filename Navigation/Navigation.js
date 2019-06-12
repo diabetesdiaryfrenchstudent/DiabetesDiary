@@ -20,7 +20,7 @@ import DataStorageInfo from  '../Components/DataStorageInfo'
 import LastData from  '../Components/LastData'
 import BloodGlucoseGraph from  '../Components/BloodGlucoseGraph'
 import BloodGlucoseLevel from  '../Components/BloodGlucoseLevel'
-
+import AddData from  '../Components/AddData'
 
 
 const WPStackNavigator = createStackNavigator({
@@ -34,28 +34,54 @@ const WPStackNavigator = createStackNavigator({
          style={{ fontSize:30, marginLeft: 15}}
          onPress={() => props.navigation.openDrawer() }
         />,
-      headerRight:
+      headerRight: //does nothing yet
         <Icon name='dots-three-horizontal'
         type='Entypo'
         style={{ fontSize:25, marginRight: 15}}
-        onPress={() => { _renderModalContent() }}
         />
 
     })
-  },
-  Goals: {
+  }, Goals: {
     screen: Goals,
-    navigationOptions:{title: 'Goals'}
+    navigationOptions: props => ({
+      title: 'Goals',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
   },  LastData: {
     screen: LastData,
-    navigationOptions:{title: 'Last Data'}
+    navigationOptions: props => ({
+      title: 'Last Data',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
   },  BloodGlucoseGraph: {
     screen: BloodGlucoseGraph,
-    navigationOptions:{title: 'Blood Glucose Graph'}
+    navigationOptions: props => ({
+      title: 'Blood Glucose Graph',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
   },  BloodGlucoseLevel: {
     screen: BloodGlucoseLevel,
-    navigationOptions:{title: 'Blood Glucose Level'}
-  },  Help: {
+    navigationOptions: props => ({
+      title: 'Blood Glucose Level',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  }, Help: {
     screen: Help,
     navigationOptions:{title: 'Help'}
   },  Customization: {
@@ -76,6 +102,9 @@ const WPStackNavigator = createStackNavigator({
   },  DataStorageInfo: {
     screen: DataStorageInfo,
     navigationOptions:{title: 'Data Storage'}
+  },  AddData: {
+    screen: AddData,
+    navigationOptions:{title: 'Add Data'}
   }
 })
 
@@ -97,11 +126,22 @@ const DrawerContent = (props) => (
 )
 
 const DrawerNavigator = createDrawerNavigator({
-  WelcomePage: {screen: WPStackNavigator},
-  Goals: {screen: Goals},
-  LastData: {screen: LastData},
-  BloodGlucoseLevel: {screen: BloodGlucoseLevel},
-  BloodGlucoseGraph: {screen: BloodGlucoseGraph}
+  WelcomePage: {
+    screen: WPStackNavigator,
+    title: 'My Diabetes Diary'
+  }, Goals: {
+    screen: Goals,
+    title: 'Goals'
+  }, LastData: {
+    screen: LastData,
+    title: 'Last Data'
+  },  BloodGlucoseGraph: {
+    screen: BloodGlucoseGraph,
+    title: 'Blood Glucose Graph'
+  },  BloodGlucoseLevel: {
+    screen: BloodGlucoseLevel,
+    title: 'Blood Glucose Level'
+  }
 },{
   contentComponent: DrawerContent
 })

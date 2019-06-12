@@ -4,6 +4,8 @@ import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 //Might use Panel : import Panel from 'react-native-panel';
 
+import styles from '../Tools/Styles'
+
 class MessageInbox extends React.Component {
   static navigationOptions = {
     title: 'Message Inbox',
@@ -20,16 +22,5 @@ class MessageInbox extends React.Component {
 }
 
 
-const styles = StyleSheet.create({
-  main_container: {
-    flex: 1,
-    backgroundColor: 'rgb(221,234,242)',
-  },
-  box: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    marginTop: 10
-  }
-})
 
 export default MessageInbox
