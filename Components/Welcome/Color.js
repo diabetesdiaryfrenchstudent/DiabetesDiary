@@ -8,7 +8,11 @@ import guy from '../../Images/M_color.png'
 
 class Color extends React.Component{
   render(){
+<<<<<<< HEAD
     //Test master conflict
+=======
+    //Test
+>>>>>>> Welcome
     return(
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
         <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
