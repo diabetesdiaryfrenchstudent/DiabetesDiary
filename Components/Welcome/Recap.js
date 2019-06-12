@@ -21,7 +21,7 @@ class Recap extends React.Component{
   
 
   render(){
-
+    //Ceci est un test
     return(
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
       <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
