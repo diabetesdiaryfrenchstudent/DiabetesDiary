@@ -9,22 +9,25 @@ import guy from '../../Images/M_recap.png'
 class Recap extends React.Component{
   constructor(props){
     super(props)
-
-  }
-
-  render(){
+    const sexe=""
     if(this.props.param.sexe==="F"){
-      sexe="Femme"
+      this.sexe="Woman"
     }
     else{
-      sexe="Homme"
+      this.sexe="Man"
     }
+
+  }
+  
+
+  render(){
+
     return(
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
       <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
       <View style={styles.bulle}>
       <TouchableOpacity onPress={() =>this._sexeScreen()}>
-        <Text style={stylesP.h2}>Sexe : {this.props.param.sexe}</Text>
+        <Text style={stylesP.h2}>Sexe : {this.sexe}</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>this._nameScreen()}>
         <Text style={stylesP.h2}>Name : {this.props.param.name}</Text>
@@ -33,7 +36,12 @@ class Recap extends React.Component{
         <Text style={stylesP.h2}>Type of diabetes : {this.props.param.type}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>this._colorScreen()}>
-        <Text style={stylesP.h2}>Color : {this.props.param.color}</Text>
+        <View style={stylesP.color_container}>
+        <Text style={stylesP.h2}>Color :</Text>
+        <View style={[styles.color,{backgroundColor: this.props.param.color}]}>
+        <Text>                      </Text>
+        </View>
+        </View>
         </TouchableOpacity>
         <Text style={stylesP.h2}>Data : {this.props.param.data}</Text>
           <Button title='Valider' onPress={() => this._buttonClick()}/>
@@ -75,6 +83,14 @@ const stylesP = StyleSheet.create({
   h2:{
     fontSize:20,
   },
+  color: {
+    marginLeft: 5,
+    width: 40,
+    height: 6,
+  },
+  color_container:{
+    flexDirection: 'row'
+  }
 })
 
 
