@@ -1,13 +1,16 @@
 import React from 'react'
-import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Button, TouchableOpacity,ImageBackground,Image } from 'react-native'
 import text from './text'
 import { connect } from 'react-redux'
 import styles from './Styles'
+import AutoHeightImage from 'react-native-auto-height-image';
+import guy from '../../Images/M_sexe.png'
 
 class Sexe extends React.Component {
   render() {
     return (
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
+        <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
         <View style={styles.bulle}>
           <Text style={stylesP.h2}>{text.hi}</Text>
           <Text style={styles.content}>{text.welcome}</Text>
@@ -20,6 +23,13 @@ class Sexe extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.guy}>
+        <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+            width={225}
+            source={guy}
+          />
+          </View>
+        </ImageBackground>
       </View>
     )
   }

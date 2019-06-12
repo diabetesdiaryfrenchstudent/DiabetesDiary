@@ -1,16 +1,19 @@
 import React from 'react'
-import {StyleSheet, View,Text,Button,TouchableOpacity} from 'react-native'
+import {StyleSheet, View,Text,Button,TouchableOpacity,ImageBackground,Image} from 'react-native'
 import text from './text'
 import { connect } from 'react-redux'
 import { StackActions, NavigationActions } from 'react-navigation';
 import styles from './Styles'
+import AutoHeightImage from 'react-native-auto-height-image';
+import guy from '../../Images/M_type.png'
 
 class Type extends React.Component{
   render(){
     return(
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
+      <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
       <View style={styles.bulle}>
-        <Text style={stylesP.h2}>{text.nice}</Text>
+        <Text style={stylesP.h2}>{text.nice} {this.props.param.name} !</Text>
         <Text style={styles.content}>{text.type}</Text>
         <View style= {styles.button_container}>
             <TouchableOpacity style={styles.button} title='Type 1' onPress={() =>this._Click("1")}>
@@ -21,6 +24,13 @@ class Type extends React.Component{
             </TouchableOpacity>
         </View>
       </View>
+      <View style={styles.guy}>
+      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+          width={215}
+          source={guy}
+        />
+        </View>
+      </ImageBackground>
       </View>
     )
   }

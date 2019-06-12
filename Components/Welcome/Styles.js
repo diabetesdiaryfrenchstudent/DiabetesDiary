@@ -8,7 +8,9 @@ export default StyleSheet.create({
     backgroundColor:'#DDEAF2',
   },
   bulle:{
-    margin:10,
+    marginVertical: 30,
+    marginHorizontal: 30,
+
   },
   button_container:{
     flexDirection:'row',
@@ -25,6 +27,20 @@ export default StyleSheet.create({
   },
   text_button :{
     color: '#FFFFFF'
+  },
+  img_bulle:{
+    width: '100%',
+    height: '60%',
+    flex:3,
+  },
+  guy:{
+    flex:4,
+    marginTop: 70,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  content:{
+    fontSize: 15,
   }
 }
 );

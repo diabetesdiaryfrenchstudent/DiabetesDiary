@@ -1,9 +1,11 @@
 import React from 'react'
-import {StyleSheet, View,Text,Button,TouchableOpacity,TextInput} from 'react-native'
+import {StyleSheet, View,Text,Button,TouchableOpacity,TextInput,ImageBackground,Image} from 'react-native'
 import text from './text'
 import { TextField } from 'react-native-material-textfield';
 import { connect } from 'react-redux'
 import styles from './Styles'
+import AutoHeightImage from 'react-native-auto-height-image';
+import guy from '../../Images/M_name.png'
 
 class Name extends React.Component{
   constructor(props){
@@ -78,6 +80,7 @@ class Name extends React.Component{
     let { firstname = 'name'} = data;
     return(
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
+      <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
       <View style={styles.bulle}>
         <Text style={styles.content}>{text.name}</Text>
         <TextField
@@ -94,6 +97,13 @@ class Name extends React.Component{
             />
         <Button title='Ok' onPress={() => this.onSubmit()}/>
       </View>
+      <View style={styles.guy}>
+      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+          width={215}
+          source={guy}
+        />
+        </View>
+      </ImageBackground>
       </View>
     )
   }

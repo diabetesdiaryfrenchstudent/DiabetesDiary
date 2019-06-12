@@ -11,8 +11,8 @@ export default text = {
   welcome:"Welcome to the Diabetes Diary App! We would like to know a little about you. Are you a :",
   color:"First of all, do you have any problem reading this ? What color do you want to use",
   name:"It looks better now! How do you want to be called?",
-  nice:"Nice to meet you ",
-  type:"What type of diabetes do you have",
+  nice:"Nice to meet you",
+  type:"What type of diabetes do you have ?",
   sexm: "Man",
   sexf:"Woman"
 }

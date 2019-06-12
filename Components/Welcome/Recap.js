@@ -1,8 +1,10 @@
 import React from 'react'
-import {StyleSheet, View,Text,Button,TouchableOpacity,TextInput} from 'react-native'
+import {StyleSheet, View,Text,Button,TouchableOpacity,ImageBackground,Image} from 'react-native'
 import text from './text'
 import { connect } from 'react-redux'
 import styles from './Styles'
+import AutoHeightImage from 'react-native-auto-height-image';
+import guy from '../../Images/M_recap.png'
 
 class Recap extends React.Component{
   constructor(props){
@@ -19,6 +21,7 @@ class Recap extends React.Component{
     }
     return(
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
+      <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
       <View style={styles.bulle}>
       <TouchableOpacity onPress={() =>this._sexeScreen()}>
         <Text style={stylesP.h2}>Sexe : {this.props.param.sexe}</Text>
@@ -33,8 +36,17 @@ class Recap extends React.Component{
         <Text style={stylesP.h2}>Color : {this.props.param.color}</Text>
         </TouchableOpacity>
         <Text style={stylesP.h2}>Data : {this.props.param.data}</Text>
-        <Button title='Valider' onPress={() => this._buttonClick()}/>
+          <Button title='Valider' onPress={() => this._buttonClick()}/>
       </View>
+      <View style={styles.guy}>
+      <AutoHeightImage //In order that the NSE logo being adapt for every phone screen
+          width={200}
+          source={guy}
+        />
+        </View>
+      </ImageBackground>
+
+
       </View>
     )
   }
