@@ -1,12 +1,20 @@
 // Components/WelcomePage.js
 
 import React from 'react'
-import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native'
+import {View, StyleSheet, Text, TouchableOpacity, Button, Image} from 'react-native'
 import Icon from "react-native-vector-icons/AntDesign"
 import { DrawerActions } from 'react-navigation'
 import Modal from 'react-native-modal';
+import ImageResizeMode from 'react-native/Libraries/Image/ImageResizeMode'
 
 import styles from '../Tools/Styles'
+import addBloodDataIcon from '../Images/created/add_blood.png'
+import addActivityDataIcon from '../Images/created/add_activity.png'
+import addCaloriesDataIcon from '../Images/created/add_calories.png'
+import addCarbohydratesDataIcon from '../Images/created/add_carbohydrates.png'
+import addInsulinDataIcon from '../Images/created/add_insulin.png'
+import addMedicationDataIcon from '../Images/created/add_medication.png'
+import addWeightDataIcon from '../Images/created/add_weight.png'
 
 class WelcomePage extends React.Component {
   static navigationOptions = {
@@ -28,14 +36,6 @@ class WelcomePage extends React.Component {
       </View>
     </TouchableOpacity>
   );
-  _renderAddButton = (text, onPress) => (
-    <TouchableOpacity onPress={onPress}>
-      <Icon name='pluscircleo'
-      type='AntDesign'
-      style={{ fontSize:40, marginLeft: 15}}
-      />
-    </TouchableOpacity>
-  );
   _renderTabButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
@@ -43,6 +43,26 @@ class WelcomePage extends React.Component {
       </View>
     </TouchableOpacity>
   );
+
+  _renderAddButton = (onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.CircleShapeView}>
+        <Icon name='pluscircleo'
+        type='AntDesign'
+        style={{fontSize:50}}
+        />
+      </View>
+    </TouchableOpacity>
+  );
+  _renderAddDataButton = (logosrc, onPress ) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.CircleShapeView}>
+        <Image source={logosrc} style={{height: 35, width: 35}} />
+      </View>
+    </TouchableOpacity>
+  );
+
+
 
   _renderModalContentMenu = () => (
     <View style={styles.modalContent}>
@@ -52,14 +72,23 @@ class WelcomePage extends React.Component {
       {this._renderTabButton('Preferences', () => {this.props.navigation.navigate('Preferences'), this.setState({ visibleModal: null})})}
       {this._renderTabButton('Message Inbox', () => {this.props.navigation.navigate('MessageInbox'), this.setState({ visibleModal: null})})}
       {this._renderTabButton('About', () => {this.props.navigation.navigate('About'), this.setState({ visibleModal: null})})}
-      {this._renderTabButton('Close', () => this.setState({ visibleModal: null }))}
+
     </View>
   );
+
   _renderModalContentAdd = () => (
-    <View style={{flexDirection: 'row-reverse', marginBottom: 20, marginRight: 10}}>
-      {this._renderAddButton('c', () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
-      {this._renderAddButton('b', () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
-      {this._renderAddButton('a', () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
+    <View style={{marginBottom: 10, paddingRight: 10}}>
+      <View style={{flexDirection: 'row-reverse'}}>
+      {this._renderAddDataButton(addBloodDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
+      {this._renderAddDataButton(addInsulinDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
+      {this._renderAddDataButton(addCaloriesDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
+      {this._renderAddDataButton(addActivityDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
+      {this._renderAddDataButton(addWeightDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
+      {this._renderAddDataButton(addMedicationDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
+      </View>
+      <View style={{flexDirection: 'row-reverse'}}>
+        {this._renderAddButton(() => this.setState({ visibleModal: null }))}
+      </View>
     </View>
   );
 
@@ -79,12 +108,14 @@ class WelcomePage extends React.Component {
 
           <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
             {this._renderMenuButton('Pop up menu', () => this.setState({ visibleModal: 1 }))}
-            <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} isVisible={this.state.visibleModal === 1}>
+            <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 1}>
               {this._renderModalContentMenu()}
             </Modal>
-            {this._renderAddButton('+', () => this.setState({ visibleModal: 2 }))}
-            <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} isVisible={this.state.visibleModal === 2} style={styles.bottomModal}>
-              {this._renderModalContentAdd()}
+            {this._renderAddButton(() => this.setState({ visibleModal: 2 }))}
+            <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 2} style={styles.bottomModal}>
+              <View style={{marginBottom: 20, marginRight: 25}}>
+                {this._renderModalContentAdd()}
+              </View>
             </Modal>
           </View>
         </TouchableOpacity>

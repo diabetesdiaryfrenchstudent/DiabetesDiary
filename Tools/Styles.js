@@ -22,7 +22,15 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
+  CircleShapeView: {
+    width: 50,
+    height: 50,
+    borderRadius: 50/2,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin:4,
+  },
 
   //Texts
   Textcopyright: {
@@ -85,7 +93,6 @@ export default StyleSheet.create({
     borderRadius: 10
   },
   bottomModal: {
-    backgroundColor: 'rgb(244, 72, 190)',
     alignItems: 'flex-end',
     justifyContent: 'flex-end'
   }

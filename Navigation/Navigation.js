@@ -10,17 +10,17 @@ import logo from '../Images/logo.png'
 
 import WelcomePage from '../Components/WelcomePage'
 import Goals from '../Components/Goals'
-import Customization from '../Components/Customization'
 import Help from '../Components/Help'
 import PersonalDataTools from '../Components/PersonalDataTools'
-import Preferences from '../Components/Preferences'
+import Settings from '../Components/Settings'
 import MessageInbox from '../Components/MessageInbox'
 import About from '../Components/About'
 import DataStorageInfo from  '../Components/DataStorageInfo'
-import LastData from  '../Components/LastData'
+import ListOfEntries from  '../Components/ListOfEntries'
 import BloodGlucoseGraph from  '../Components/BloodGlucoseGraph'
 import BloodGlucoseLevel from  '../Components/BloodGlucoseLevel'
 import AddData from  '../Components/AddData'
+import Tables from  '../Components/Tables'
 
 
 const WPStackNavigator = createStackNavigator({
@@ -51,10 +51,80 @@ const WPStackNavigator = createStackNavigator({
          style={{ fontSize:30, marginLeft: 15}}
          onPress={() => props.navigation.openDrawer() }
         />})
-  },  LastData: {
-    screen: LastData,
+  },  ListOfEntries: {
+    screen: ListOfEntries,
     navigationOptions: props => ({
-      title: 'Last Data',
+      title: 'List of entries',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  },  PersonalDataTools: {
+    screen: PersonalDataTools,
+    navigationOptions: props => ({
+      title: 'Personal Data Tools',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  },  Settings: {
+    screen: Settings,
+    navigationOptions: props => ({
+      title: 'Settings',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  },  MessageInbox: {
+    screen: MessageInbox,
+    navigationOptions: props => ({
+      title: 'Message Inbox',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  },  About: {
+    screen: About,
+    navigationOptions: props => ({
+      title: 'About',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  },  DataStorageInfo: {
+    screen: DataStorageInfo,
+    navigationOptions: props => ({
+      title: 'Data Storage',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  },  AddData: {
+    screen: AddData,
+    navigationOptions: props => ({
+      title: 'Add Data',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+  },  Tables: {
+    screen: Tables,
+    navigationOptions: props => ({
+      title: 'Table',
       headerLeft:
          <Icon name='menu'
          type='Entypo'
@@ -83,30 +153,17 @@ const WPStackNavigator = createStackNavigator({
         />})
   }, Help: {
     screen: Help,
-    navigationOptions:{title: 'Help'}
-  },  Customization: {
-    screen: Customization,
-    navigationOptions:{title: 'Customization'}
-  },  PersonalDataTools: {
-    screen: PersonalDataTools,
-    navigationOptions:{title: 'Personal Data Tools'}
-  },  Preferences: {
-    screen: Preferences,
-    navigationOptions:{title: 'Preferences'}
-  },  MessageInbox: {
-    screen: MessageInbox,
-    navigationOptions:{title: 'Message Inbox'}
-  },  About: {
-    screen: About,
-    navigationOptions:{title: 'About'}
-  },  DataStorageInfo: {
-    screen: DataStorageInfo,
-    navigationOptions:{title: 'Data Storage'}
-  },  AddData: {
-    screen: AddData,
-    navigationOptions:{title: 'Add Data'}
-  }
-})
+    navigationOptions: props => ({
+      title: 'Help',
+      headerLeft:
+         <Icon name='menu'
+         type='Entypo'
+         style={{ fontSize:30, marginLeft: 15}}
+         onPress={() => props.navigation.openDrawer() }
+        />})
+}})
+
+
 
 const DrawerContent = (props) => (
   <View>
@@ -116,8 +173,10 @@ const DrawerContent = (props) => (
       alignItems: 'center',
       justifyContent: 'center',
       }}>
-      <Image source={logo}/>
+
       <Text style={{ marginTop:15, color: 'white', fontSize: 30 }}> Diabetes Diary </Text>
+      <Image source={logo}/>
+
     </View>
     <ScrollView>
       <DrawerItems {...props}/>
@@ -129,18 +188,24 @@ const DrawerNavigator = createDrawerNavigator({
   WelcomePage: {
     screen: WPStackNavigator,
     title: 'My Diabetes Diary'
-  }, Goals: {
-    screen: Goals,
-    title: 'Goals'
-  }, LastData: {
-    screen: LastData,
-    title: 'Last Data'
-  },  BloodGlucoseGraph: {
-    screen: BloodGlucoseGraph,
-    title: 'Blood Glucose Graph'
-  },  BloodGlucoseLevel: {
-    screen: BloodGlucoseLevel,
-    title: 'Blood Glucose Level'
+  }, Tables: {
+    screen: Tables,
+    title: 'Tables'
+  }, ListOfEntries: {
+    screen: ListOfEntries,
+    title: 'List of entries'
+  }, MessageInbox: {
+    screen: MessageInbox,
+    title: 'Message Inbox'
+  }, PersonalDataTools: {
+    screen: PersonalDataTools,
+    title: 'Personal Data Tools'
+  }, Settings: {
+    screen: Settings,
+    title: 'Settings'
+  }, About: {
+    screen: About,
+    title: 'About'
   }
 },{
   contentComponent: DrawerContent

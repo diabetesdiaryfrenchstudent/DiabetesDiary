@@ -1,11 +1,11 @@
-// Components/Preferences.js
+// Components/Settings.js
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
 import styles from '../Tools/Styles'
 
-class Preferences extends React.Component {
+class Settings extends React.Component {
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
@@ -19,4 +19,4 @@ class Preferences extends React.Component {
 
 
 
-export default Preferences
+export default Settings

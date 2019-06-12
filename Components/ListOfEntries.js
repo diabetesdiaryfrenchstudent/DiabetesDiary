@@ -1,11 +1,14 @@
-// Components/Customization.js
+// Components/ListOfEntries.js
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
 import styles from '../Tools/Styles'
 
-class Customization extends React.Component {
+class ListOfEntries extends React.Component {
+  static navigationOptions = {
+    title: 'List of entries',
+  }
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
@@ -18,5 +21,4 @@ class Customization extends React.Component {
 }
 
 
-
-export default Customization
+export default ListOfEntries

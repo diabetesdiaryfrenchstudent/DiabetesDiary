@@ -1,19 +1,16 @@
-// Components/LastData.js
+// Components/Tables.js
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
 import styles from '../Tools/Styles'
 
-class LastData extends React.Component {
-  static navigationOptions = {
-    title: 'Last Data',
-  }
+class Tables extends React.Component {
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
-          <View style={styles.box}>
-            <Text>We'll see later</Text>
+          <View>
+            <Text>We'll see later </Text>
           </View>
         </TouchableOpacity>
       )
@@ -21,4 +18,5 @@ class LastData extends React.Component {
 }
 
 
-export default LastData
+
+export default Tables
