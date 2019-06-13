@@ -16,26 +16,22 @@ import addInsulinDataIcon from '../Images/created/add_insulin.png'
 import addMedicationDataIcon from '../Images/created/add_medication.png'
 import addWeightDataIcon from '../Images/created/add_weight.png'
 
+import h1 from '../Images/Help/tutorial_homescreen.png'
+
 class WelcomePage extends React.Component {
   static navigationOptions = {
     title: 'My Diary',
   }
+
   constructor(props){
     super(props)
-      this._renderModalContentMenu=this._renderModalContentMenu.bind(this)
       this._renderModalContentAdd=this._renderModalContentAdd.bind(this)
       this.state = {
          visibleModal: null,
        };
   }
 
-  _renderMenuButton = (text, onPress) => (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.MenuButton}>
-        <Text style={styles.textButton}>{text}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+
   _renderTabButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
@@ -64,20 +60,9 @@ class WelcomePage extends React.Component {
 
 
 
-  _renderModalContentMenu = () => (
-    <View style={styles.modalContent}>
-      {this._renderTabButton('Help', () => {this.props.navigation.navigate('Help'), this.setState({ visibleModal: null})})}
-      {this._renderTabButton('Customization', () => {this.props.navigation.navigate('Customization'), this.setState({ visibleModal: null})})}
-      {this._renderTabButton('Personal Data Tools', () => {this.props.navigation.navigate('PersonalDataTools'), this.setState({ visibleModal: null})})}
-      {this._renderTabButton('Preferences', () => {this.props.navigation.navigate('Preferences'), this.setState({ visibleModal: null})})}
-      {this._renderTabButton('Message Inbox', () => {this.props.navigation.navigate('MessageInbox'), this.setState({ visibleModal: null})})}
-      {this._renderTabButton('About', () => {this.props.navigation.navigate('About'), this.setState({ visibleModal: null})})}
-
-    </View>
-  );
 
   _renderModalContentAdd = () => (
-    <View style={{flexDirection: 'row-reverse', justifyContent: 'center', marginBottom: 50}}>
+    <View style={{flexDirection: 'row-reverse', justifyContent: 'center', marginBottom: 40}}>
       {this._renderAddDataButton(addBloodDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderAddDataButton(addInsulinDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderAddDataButton(addCaloriesDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
@@ -87,37 +72,39 @@ class WelcomePage extends React.Component {
     </View>
   );
 
+_helpContent = () => (
+  <View>
+    <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
+      <Image source={h1}/>
+    </TouchableOpacity>
+  </View>
+);
+
 
   render() {
       return (
-        <TouchableOpacity style={styles.main_container}>
-          <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
+        <View style={styles.main_container}>
+          <TouchableOpacity style={{flex:1,justifyContent: 'center', alignItems: 'center'}} onPress={() => this.props.navigation.navigate('Goals')}>
             <Text>Display goals</Text>
-          </View>
-          <View style={styles.box}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('BloodGlucoseGraph')}>
             <Text>Display graph</Text>
-          </View>
-          <View style={styles.box}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('BloodGlucoseLevel')}>
             <Text>Display table</Text>
-          </View>
+          </TouchableOpacity>
 
-          <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginRight: 35}}>
-            {this._renderMenuButton('Pop up menu', () => this.setState({ visibleModal: 1 }))}
-            <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 1}>
-              <TouchableOpacity style={{flex:1, alignItems: 'center', justifyContent: 'center'}} onPress={()=>this.setState({visibleModal:null})}>
-                {this._renderModalContentMenu()}
-              </TouchableOpacity>
-            </Modal>
+          <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginRight: 28}}>
             {this._renderAddButton(() => this.setState({ visibleModal: 2 }))}
             <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 2} style={styles.bottomModal}>
               <View>
-                <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:20}} onPress={()=>this.setState({visibleModal:null})}>
+                <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
                   {this._renderModalContentAdd()}
                 </TouchableOpacity>
               </View>
             </Modal>
           </View>
-        </TouchableOpacity>
+        </View>
       )
   }
 }

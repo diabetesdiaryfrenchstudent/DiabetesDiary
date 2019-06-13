@@ -10,7 +10,6 @@ import logo from '../Images/logo.png'
 
 import WelcomePage from '../Components/WelcomePage'
 import Goals from '../Components/Goals'
-import Help from '../Components/Help'
 import PersonalDataTools from '../Components/PersonalDataTools'
 import Settings from '../Components/Settings'
 import MessageInbox from '../Components/MessageInbox'
@@ -21,6 +20,7 @@ import BloodGlucoseGraph from  '../Components/BloodGlucoseGraph'
 import BloodGlucoseLevel from  '../Components/BloodGlucoseLevel'
 import AddData from  '../Components/AddData'
 import Tables from  '../Components/Tables'
+
 
 
 const WPStackNavigator = createStackNavigator({
@@ -35,9 +35,10 @@ const WPStackNavigator = createStackNavigator({
          onPress={() => props.navigation.openDrawer() }
         />,
       headerRight: //does nothing yet
-        <Icon name='dots-three-horizontal'
+        <Icon name='help'
         type='Entypo'
         style={{ fontSize:25, marginRight: 15}}
+        onPress={ () => console.log('use fonction _helpContent() from WelcomePage')}
         />
 
     })
@@ -151,17 +152,8 @@ const WPStackNavigator = createStackNavigator({
          style={{ fontSize:30, marginLeft: 15}}
          onPress={() => props.navigation.openDrawer() }
         />})
-  }, Help: {
-    screen: Help,
-    navigationOptions: props => ({
-      title: 'Help',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-}})
+  },
+})
 
 
 
