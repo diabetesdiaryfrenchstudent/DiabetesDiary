@@ -77,18 +77,13 @@ class WelcomePage extends React.Component {
   );
 
   _renderModalContentAdd = () => (
-    <View style={{marginBottom: 10, paddingRight: 10}}>
-      <View style={{flexDirection: 'row-reverse'}}>
+    <View style={{flexDirection: 'row-reverse', justifyContent: 'center', marginBottom: 50}}>
       {this._renderAddDataButton(addBloodDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderAddDataButton(addInsulinDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderAddDataButton(addCaloriesDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderAddDataButton(addActivityDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderAddDataButton(addWeightDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderAddDataButton(addMedicationDataIcon, () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
-      </View>
-      <View style={{flexDirection: 'row-reverse'}}>
-        {this._renderAddButton(() => this.setState({ visibleModal: null }))}
-      </View>
     </View>
   );
 
@@ -106,15 +101,19 @@ class WelcomePage extends React.Component {
             <Text>Display table</Text>
           </View>
 
-          <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+          <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginRight: 35}}>
             {this._renderMenuButton('Pop up menu', () => this.setState({ visibleModal: 1 }))}
             <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 1}>
-              {this._renderModalContentMenu()}
+              <TouchableOpacity style={{flex:1, alignItems: 'center', justifyContent: 'center'}} onPress={()=>this.setState({visibleModal:null})}>
+                {this._renderModalContentMenu()}
+              </TouchableOpacity>
             </Modal>
             {this._renderAddButton(() => this.setState({ visibleModal: 2 }))}
             <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 2} style={styles.bottomModal}>
-              <View style={{marginBottom: 20, marginRight: 25}}>
-                {this._renderModalContentAdd()}
+              <View>
+                <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:20}} onPress={()=>this.setState({visibleModal:null})}>
+                  {this._renderModalContentAdd()}
+                </TouchableOpacity>
               </View>
             </Modal>
           </View>
