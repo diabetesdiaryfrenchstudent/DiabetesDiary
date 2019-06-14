@@ -23,7 +23,7 @@ class Recap extends React.Component{
 
 
   render(){
-    //Ceci est un test
+    console.log(this.props)
     return(
       <View style={[styles.main_container,{backgroundColor: this.props.param.color}]}>
       <ImageBackground source={require('../../Images/blue.png')}  imageStyle={{resizeMode: 'stretch'}} style={styles.img_bulle}>
@@ -115,7 +115,8 @@ const stylesP = StyleSheet.create({
 //Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
-    param: state
+    param: state.prefReducers,
+    data:state.dataReducers
   }
 }
 

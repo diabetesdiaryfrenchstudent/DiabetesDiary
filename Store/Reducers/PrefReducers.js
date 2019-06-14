@@ -33,19 +33,20 @@ function prefReducers(state = initialState, action) {
       }
       return nextState || state
     case 'TOGGLE_TYPE':
-
+    console.log("ICI")
+    console.log(action.value)
       nextState = {
         ...state,
-        type: action.value,
-        endInit: true //Last screen of the initialization, we can say that's over
+        type: action.value
       }
       return nextState || state
     case 'TOGGLE_DATA':
-
       nextState = {
         ...state,
-        data: action.value
+        data:action.value,
+        endInit: true //Last screen of the initialization, we can say that's over
       }
+
       return nextState || state
     default:
       return nextState || state

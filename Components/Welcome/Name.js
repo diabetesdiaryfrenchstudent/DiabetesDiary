@@ -11,7 +11,6 @@ class Name extends React.Component{
   constructor(props){
     super(props)
       this.onFocus = this.onFocus.bind(this);
-      console.log("ICI")
       this.onSubmit = this.onSubmit.bind(this);
       this.onChangeText = this.onChangeText.bind(this);
       this.firstnameRef = this.updateRef.bind(this, 'firstname')
@@ -142,7 +141,7 @@ const stylesP = StyleSheet.create({
 //Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
-    param: state
+    param: state.prefReducers
   }
 }
 

@@ -73,7 +73,7 @@ const stylesP = StyleSheet.create({
 //Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
-    param: state
+    param: state.prefReducers
   }
 }
 

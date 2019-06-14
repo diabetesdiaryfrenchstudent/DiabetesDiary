@@ -53,11 +53,14 @@ class Type extends React.Component{
   }
   _Click(type){
       const action = {type: "TOGGLE_TYPE", value: type}
-      //Send to the store the value and the type of action
       this.props.dispatch(action)
+      if (this.props.param.endInit) {
+        this.props.navigation.navigate("Recap")
+      } else {
+        this.props.navigation.navigate("Data")
+      }
+      //Send to the store the value and the type of action
 
-      //AS it's the last action, we reset the stack in order to prevent user to go back
-      this.props.navigation.dispatch(resetAction);
   }
 }
 const stylesP = StyleSheet.create({
@@ -71,15 +74,10 @@ const stylesP = StyleSheet.create({
 //Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
-    param: state
+    param: state.prefReducers
   }
 }
 
-//Constante for reset the stack
-const resetAction = StackActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: 'Recap' })],
-});
 
 
 export default connect(mapStateToProps)(Type)

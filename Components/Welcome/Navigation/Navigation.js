@@ -5,6 +5,7 @@ import Color from '../Color'
 import Name from '../Name'
 import Type from '../Type'
 import Recap from '../Recap'
+import Data from '../Data'
 
 const WelcomeStackNavigator = createStackNavigator({
   Welcome: { //First screen of the application
@@ -41,6 +42,12 @@ const WelcomeStackNavigator = createStackNavigator({
     screen: Recap,
     navigationOptions:{
       title: 'Summary'
+    }
+  },
+  Data:{
+    screen: Data,
+    navigationOptions:{
+      title: 'Data'
     }
   }
 })
