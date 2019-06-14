@@ -145,7 +145,8 @@ class Data extends React.Component {
     this.props.dispatch(action6)
     const action7 = { type: "TOGGLE_CAL", value: this.state.cal }
     this.props.dispatch(action7)
-
+    const action8 = {type :"TOGGLE_END", value:true}
+    this.props.dispatch(action8)
     //AS it's the last action, we reset the stack in order to prevent user to go back
     this.props.navigation.dispatch(resetAction);
   }
@@ -163,7 +164,8 @@ const stylesP = StyleSheet.create({
 //Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
-    param: state
+    param: state.prefReducers,
+    data: state.dataReducers
   }
 }
 

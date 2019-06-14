@@ -40,10 +40,9 @@ function prefReducers(state = initialState, action) {
         type: action.value
       }
       return nextState || state
-    case 'TOGGLE_DATA':
+    case 'TOGGLE_END':
       nextState = {
         ...state,
-        data:action.value,
         endInit: true //Last screen of the initialization, we can say that's over
       }
 
