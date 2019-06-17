@@ -16,13 +16,12 @@ import MessageInbox from '../Components/MessageInbox'
 import About from '../Components/About'
 import DataStorageInfo from  '../Components/DataStorageInfo'
 import ListOfEntries from  '../Components/ListOfEntries'
-import BloodGlucoseGraph from  '../Components/BloodGlucoseGraph'
-import BloodGlucoseLevel from  '../Components/BloodGlucoseLevel'
 import AddData from  '../Components/AddData'
-import Tables from  '../Components/Tables'
+import Graph from  '../Components/Graph'
+import Help from  '../Components/Help'
 
 
-
+/** Create the stack navigation */
 const WPStackNavigator = createStackNavigator({
     WelcomePage: {
     screen: WelcomePage,
@@ -30,17 +29,14 @@ const WPStackNavigator = createStackNavigator({
       title: 'Diabetes Diary',
       headerLeft:
          <Icon name='menu'
-         type='Entypo'
          style={{ fontSize:30, marginLeft: 15}}
          onPress={() => props.navigation.openDrawer() }
         />,
-      headerRight: //does nothing yet
+      headerRight:
         <Icon name='help'
-        type='Entypo'
         style={{ fontSize:25, marginRight: 15}}
-        onPress={ () => console.log('use fonction _helpContent() from WelcomePage')}
+        onPress={ () => WelcomePage._helpContent() }
         />
-
     })
   }, Goals: {
     screen: Goals,
@@ -122,41 +118,22 @@ const WPStackNavigator = createStackNavigator({
          style={{ fontSize:30, marginLeft: 15}}
          onPress={() => props.navigation.openDrawer() }
         />})
-  },  Tables: {
-    screen: Tables,
+  },  Graph: {
+    screen: Graph,
     navigationOptions: props => ({
-      title: 'Table',
+      title: 'Graph',
       headerLeft:
          <Icon name='menu'
          type='Entypo'
          style={{ fontSize:30, marginLeft: 15}}
          onPress={() => props.navigation.openDrawer() }
-        />})
-  },  BloodGlucoseGraph: {
-    screen: BloodGlucoseGraph,
-    navigationOptions: props => ({
-      title: 'Blood Glucose Graph',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  BloodGlucoseLevel: {
-    screen: BloodGlucoseLevel,
-    navigationOptions: props => ({
-      title: 'Blood Glucose Level',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
+        />
+    })
   },
 })
 
 
-
+/** Create the header for the drawer navigation menu */
 const DrawerContent = (props) => (
   <View>
     <View style={{
@@ -176,13 +153,14 @@ const DrawerContent = (props) => (
   </View>
 )
 
+/** Create the drawer navigation menu */
 const DrawerNavigator = createDrawerNavigator({
   WelcomePage: {
     screen: WPStackNavigator,
     title: 'My Diabetes Diary'
-  }, Tables: {
-    screen: Tables,
-    title: 'Tables'
+  }, Graph: {
+    screen: Graph,
+    title: 'Graph'
   }, ListOfEntries: {
     screen: ListOfEntries,
     title: 'List of entries'

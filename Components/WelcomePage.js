@@ -15,7 +15,6 @@ import insulinIcon from '../Images/insulin_syringe.png'
 import h1 from '../Images/Help/tutorial_homescreen.png'
 
 
-
 class WelcomePage extends React.Component {
   static navigationOptions = {
     title: 'My Diary',
@@ -30,7 +29,9 @@ class WelcomePage extends React.Component {
   }
 
 
-
+  /** Create a round button with an image
+  logosrc : image to display
+  onPress : action when clicking */
   _renderAddInsulinDataButton = (logosrc, onPress ) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.CircleShapeView}>
@@ -39,16 +40,19 @@ class WelcomePage extends React.Component {
     </TouchableOpacity>
   );
 
+
+/** Create a round button with design based on an icon
+TypeIcon : Entypo, AntDesign,..
+name : name of the icon to display
+onPress : action when clicking */
   _renderIconButton = (TypeIcon, name, onPress ) => (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.CircleShapeView}>
-        <TypeIcon name={name} style={{fontSize:40}} />
-      </View>
-    </TouchableOpacity>
+    <View style={styles.CircleShapeView}>
+      <TypeIcon name={name} style={{fontSize:40}} onPress={onPress}/>
+    </View>
   );
 
 
-
+  /** Create the bottom menu (to add all kind of data) */
   _renderModalContentAdd = () => (
     <View style={{flexDirection: 'row-reverse', justifyContent: 'center', marginBottom: 40}}>
       {this._renderIconButton(FontAwesome, 'tint', () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
@@ -61,14 +65,18 @@ class WelcomePage extends React.Component {
     </View>
   );
 
+/** Display modal with help tutorial images */
 //not used yet bc of unworking header button
 _helpContent = () => (
-  <View>
-    <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
-      <Image source={h1}/>
-    </TouchableOpacity>
-  </View>
+    <View>
+    <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 2} style={styles.bottomModal}>
+      <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
+        <Image source={h1}/>
+      </TouchableOpacity>
+    </Modal>
+    </View>
 );
+
 
 
   render() {
@@ -77,10 +85,10 @@ _helpContent = () => (
           <TouchableOpacity style={{flex:1,justifyContent: 'center', alignItems: 'center'}} onPress={() => this.props.navigation.navigate('Goals')}>
             <Text>Display goals</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('BloodGlucoseGraph')}>
+          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('Graph')}>
             <Text>Display graph</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('BloodGlucoseLevel')}>
+          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('ListOfEntries')}>
             <Text>Display table</Text>
           </TouchableOpacity>
 

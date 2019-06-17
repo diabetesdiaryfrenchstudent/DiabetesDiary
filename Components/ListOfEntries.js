@@ -12,7 +12,7 @@ class ListOfEntries extends React.Component {
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
-          <View style={styles.box}>
+          <View>
             <Text>We'll see later</Text>
           </View>
         </TouchableOpacity>
