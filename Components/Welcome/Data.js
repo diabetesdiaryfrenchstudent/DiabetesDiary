@@ -15,15 +15,23 @@ class Data extends React.Component {
     super(props)
     this.state={
 
-        bg:true,
-        ins:true,
-        wei:true,
-        med:false,
-        act:false,
-        car:true,
-        cal:false,
+        bg:this.props.data.bg,
+        ins:this.props.data.ins,
+        wei:this.props.data.wei,
+        med:this.props.data.med,
+        act:this.props.data.act,
+        car:this.props.data.car,
+        cal:this.props.data.cal,
 
     }
+    this.falseBegin=true;
+    if(!this.state.bg){
+      this.falseBegin=true
+    }
+    else{
+      this.falseBegin=false
+    }
+
   }
 
   _changeCheckBox_bg=()=>{
@@ -145,10 +153,17 @@ class Data extends React.Component {
     this.props.dispatch(action6)
     const action7 = { type: "TOGGLE_CAL", value: this.state.cal }
     this.props.dispatch(action7)
-    const action8 = {type :"TOGGLE_END", value:true}
-    this.props.dispatch(action8)
-    //AS it's the last action, we reset the stack in order to prevent user to go back
-    this.props.navigation.dispatch(resetAction);
+
+    if((this.state.bg&&this.falseBegin)||(this.state.bg&&!this.props.param.endInit)){
+      this.props.navigation.navigate("BloodGlucose")
+    }else{
+      console.log(this.falseBegin)
+      const action8 = {type :"TOGGLE_END", value:true}
+      this.props.dispatch(action8)
+      //AS it's the last action, we reset the stack in order to prevent user to go back
+      this.props.navigation.dispatch(resetAction);
+    }
+
   }
 }
 

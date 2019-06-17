@@ -6,6 +6,7 @@ import Name from '../Name'
 import Type from '../Type'
 import Recap from '../Recap'
 import Data from '../Data'
+import BloodGlucose from '../BloodGlucose'
 
 const WelcomeStackNavigator = createStackNavigator({
   Welcome: { //First screen of the application
@@ -48,6 +49,12 @@ const WelcomeStackNavigator = createStackNavigator({
     screen: Data,
     navigationOptions:{
       title: 'Data'
+    }
+  },
+  BloodGlucose:{
+    screen: BloodGlucose,
+    navigationOptions:{
+      title: 'Blood glucose'
     }
   }
 })

@@ -51,7 +51,12 @@ class Name extends React.Component{
 
           if (!value) {
             errors[name] = 'Should not be empty';
-          }else{
+          }
+          else if(value.length>20){
+            errors[name] = 'Too long'
+          }
+
+          else{
           const action = {type: "TOGGLE_NAME", value: value}
           //Send to the store the value and the type of action
           this.props.dispatch(action)
@@ -83,6 +88,7 @@ class Name extends React.Component{
       <View style={styles.bulle}>
         <Text style={styles.content}>{text.name}</Text>
         <TextField
+
               ref={this.firstnameRef}
               value={data.firstname}
               autoCorrect={false}
@@ -90,7 +96,7 @@ class Name extends React.Component{
               onFocus={this.onFocus}
               onChangeText={this.onChangeText}
               onSubmitEditing={this.onSubmit}
-              returnKeyType='next'
+              returnKeyType='done'
               label='First Name'
               error={errors.firstname}
             />

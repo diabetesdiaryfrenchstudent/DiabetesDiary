@@ -2,7 +2,6 @@ const initialState = {
   sexe: "",
   color: "#DDEAF2",
   name: "",
-  data: "",
   type: "",
   endInit: false //Variable to check if the user pass all the initialization screen
 }
@@ -18,6 +17,9 @@ function prefReducers(state = initialState, action) {
         sexe: action.value
       }
       return nextState || state
+
+
+
     case 'TOGGLE_COLOR':
 
       nextState = {
@@ -25,6 +27,9 @@ function prefReducers(state = initialState, action) {
         color: action.value
       }
       return nextState || state
+
+
+
     case 'TOGGLE_NAME':
 
       nextState = {
@@ -32,20 +37,41 @@ function prefReducers(state = initialState, action) {
         name: action.value
       }
       return nextState || state
+
+
+
     case 'TOGGLE_TYPE':
-    console.log("ICI")
-    console.log(action.value)
       nextState = {
         ...state,
         type: action.value
       }
       return nextState || state
+
+
+
     case 'TOGGLE_END':
       nextState = {
         ...state,
         endInit: true //Last screen of the initialization, we can say that's over
       }
+      return nextState || state
 
+
+
+    case 'TOGGLE_MIN':
+      nextState = {
+        ...state,
+        min: action.value //Last screen of the initialization, we can say that's over
+      }
+      return nextState || state
+
+
+
+    case 'TOGGLE_MAX':
+      nextState = {
+        ...state,
+        max: action.value //Last screen of the initialization, we can say that's over
+      }
       return nextState || state
     default:
       return nextState || state

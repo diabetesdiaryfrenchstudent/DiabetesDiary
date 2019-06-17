@@ -33,7 +33,6 @@ class Recap extends React.Component {
     let data="";
     if (this.props.data.bg) {
       tab.push("Blood Glucose")
-      console.log("BG")
     }
     if (this.props.data.ins) {
     tab.push("Insulin")
@@ -53,14 +52,13 @@ class Recap extends React.Component {
     if (this.props.data.cal) {
       tab.push("Calories")
     }
-    console.log(tab)
     for(var i=0;i<tab.length;i++){
       data+=tab[i];
       if(i!=tab.length-1){
         data+=", "
       }
     }
-    console.log(data)
+
     return (
       <View style={[styles.main_container, { backgroundColor: this.props.param.color }]}>
         <ImageBackground source={require('../../Images/blue.png')} imageStyle={{ resizeMode: 'stretch' }} style={styles.img_bulle}>

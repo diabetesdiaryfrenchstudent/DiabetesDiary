@@ -14,5 +14,6 @@ export default text = {
   nice:"Nice to meet you",
   type:"What type of diabetes do you have ?",
   sexm: "Man",
-  sexf:"Woman"
+  sexf:"Woman",
+  bg:"Choose your blood glucose level :"
 }

@@ -54,11 +54,41 @@ class Type extends React.Component{
   _Click(type){
       const action = {type: "TOGGLE_TYPE", value: type}
       this.props.dispatch(action)
-      if (this.props.param.endInit) {
-        this.props.navigation.navigate("Recap")
-      } else {
-        this.props.navigation.navigate("Data")
+      if(type==1){
+        const bg={type: "TOGGLE_BG", value: true}
+        const act={type: "TOGGLE_ACT", value: true}
+        const ins={type:"TOGGLE_INS",value:true}
+        const car={type: "TOGGLE_CAR", value: true}
+        const wei={type:"TOGGLE_WEI",value:false}
+        const cal={type:"TOGGLE_CAL", value:false}
+        const med={type: "TOGGLE_MED", value: false}
+        this.props.dispatch(bg)
+        this.props.dispatch(act)
+        this.props.dispatch(ins)
+        this.props.dispatch(car)
+        this.props.dispatch(wei)
+        this.props.dispatch(cal)
+        this.props.dispatch(med)
       }
+      else{
+        const bg={type: "TOGGLE_BG", value: true}
+        const act={type: "TOGGLE_ACT", value: true}
+        const ins={type:"TOGGLE_INS",value:false}
+        const car={type: "TOGGLE_CAR", value: false}
+        const wei={type:"TOGGLE_WEI",value:false}
+        const cal={type:"TOGGLE_CAL", value:true}
+        const med={type: "TOGGLE_MED", value: true}
+        this.props.dispatch(bg)
+        this.props.dispatch(act)
+        this.props.dispatch(ins)
+        this.props.dispatch(car)
+        this.props.dispatch(wei)
+        this.props.dispatch(cal)
+        this.props.dispatch(med)
+      }
+
+        this.props.navigation.navigate("Data")
+
       //Send to the store the value and the type of action
 
   }
@@ -74,7 +104,8 @@ const stylesP = StyleSheet.create({
 //Mapping of store to props of the component
 const mapStateToProps = (state) => {
   return {
-    param: state.prefReducers
+    param: state.prefReducers,
+    data: state.dataReducers
   }
 }
 

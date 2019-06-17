@@ -30,7 +30,7 @@ export default StyleSheet.create({
   },
   img_bulle:{
     width: '100%',
-    height: '60%',
+    height: '65%',
     flex:3,
   },
   guy:{
