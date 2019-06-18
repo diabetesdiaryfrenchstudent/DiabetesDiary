@@ -1,16 +1,19 @@
-// Components/Graph.js
+// Components/ListOfEntries.js
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
-import styles from '../Tools/Styles'
+import styles from '../../Tools/Styles'
 
-class Graph extends React.Component {
+class ListOfEntries extends React.Component {
+  static navigationOptions = {
+    title: 'List of entries',
+  }
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
           <View>
-            <Text>We'll see later </Text>
+            <Text>We'll see later</Text>
           </View>
         </TouchableOpacity>
       )
@@ -18,5 +21,4 @@ class Graph extends React.Component {
 }
 
 
-
-export default Graph
+export default ListOfEntries

@@ -5,7 +5,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Button, Image} from 'react-nat
 import Modal from 'react-native-modal'
 import Icon from "react-native-vector-icons/Entypo"
 
-import h1 from '../Images/Help/tutorial_homescreen.png'
+import h1 from '../../Images/Help/tutorial_homescreen.png'
 
 class Help extends React.Component {
   static navigationOptions = {

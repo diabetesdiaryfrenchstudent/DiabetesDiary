@@ -3,7 +3,7 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
-import styles from '../Tools/Styles'
+import styles from '../../Tools/Styles'
 
 class Goals extends React.Component {
   static navigationOptions = {

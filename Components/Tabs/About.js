@@ -2,10 +2,10 @@
 
 import React from 'react'
 import {View, ScrollView, StyleSheet, Text, Image, TouchableOpacity, Linking} from 'react-native'
-import DataStorageInfo from  '../Components/DataStorageInfo'
+import DataStorageInfo from  '../../Components/Tabs/DataStorageInfo'
 
-import styles from '../Tools/Styles'
-import NSEImage from '../Images/NSEImage.png'
+import styles from '../../Tools/Styles'
+import NSEImage from '../../Images/NSEImage.png'
 
 class About extends React.Component {
   static navigationOptions = {

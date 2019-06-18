@@ -5,7 +5,7 @@ import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from 'react-native
 import Modal from 'react-native-modal'
 import { Divider, CheckBox } from 'react-native-elements'
 
-import styles from '../Tools/Styles'
+import styles from '../../Tools/Styles'
 
 class Settings extends React.Component {
   state = {

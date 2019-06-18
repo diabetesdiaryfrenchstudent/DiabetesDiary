@@ -1,13 +1,13 @@
-// Components/AddData.js
+// Components/PersonalDataTools.js
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
-import styles from '../Tools/Styles'
+import styles from '../../Tools/Styles'
 
-class AddData extends React.Component {
+class PersonalDataTools extends React.Component {
   static navigationOptions = {
-    title: 'AddData',
+    title: 'Personal Data Tools',
   }
   render() {
       return (
@@ -20,4 +20,5 @@ class AddData extends React.Component {
   }
 }
 
-export default AddData
+
+export default PersonalDataTools

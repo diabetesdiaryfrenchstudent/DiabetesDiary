@@ -8,17 +8,17 @@ import Modal from 'react-native-modal';
 
 import logo from '../Images/logo.png'
 
-import WelcomePage from '../Components/WelcomePage'
-import Goals from '../Components/Goals'
-import PersonalDataTools from '../Components/PersonalDataTools'
-import Settings from '../Components/Settings'
-import MessageInbox from '../Components/MessageInbox'
-import About from '../Components/About'
-import DataStorageInfo from  '../Components/DataStorageInfo'
-import ListOfEntries from  '../Components/ListOfEntries'
-import AddData from  '../Components/AddData'
-import Graph from  '../Components/Graph'
-import Help from  '../Components/Help'
+import WelcomePage from '../Components/Tabs/WelcomePage'
+import Goals from '../Components/Tabs/Goals'
+import PersonalDataTools from '../Components/Tabs/PersonalDataTools'
+import Settings from '../Components/Tabs/Settings'
+import MessageInbox from '../Components/Tabs/MessageInbox'
+import About from '../Components/Tabs/About'
+import DataStorageInfo from  '../Components/Tabs/DataStorageInfo'
+import ListOfEntries from  '../Components/Tabs/ListOfEntries'
+import AddData from  '../Components/Tabs/AddData'
+import Graph from  '../Components/Tabs/Graph'
+import Help from  '../Components/Tabs/Help'
 
 
 /** Create the stack navigation */

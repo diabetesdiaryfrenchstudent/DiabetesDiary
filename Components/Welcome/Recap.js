@@ -116,7 +116,7 @@ class Recap extends React.Component {
   }
 
   _buttonClick = () => {
-    console.log("Infos checked")
+    this.props.navigation.navigate("MainComponent")
   }
   _screenClick = (screen) => {
     this.props.navigation.navigate(screen)

@@ -3,8 +3,8 @@
 import React from 'react'
 import {View, ScrollView, StyleSheet, Text, Image, TouchableOpacity, Linking} from 'react-native'
 
-import styles from '../Tools/Styles'
-import NSEImage from '../Images/NSEImage.png'
+import styles from '../../Tools/Styles'
+import NSEImage from '../../Images/NSEImage.png'
 
 class About extends React.Component {
   static navigationOptions = {

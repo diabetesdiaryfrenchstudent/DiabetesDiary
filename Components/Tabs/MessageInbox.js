@@ -4,7 +4,7 @@ import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 //Might use Panel : import Panel from 'react-native-panel';
 
-import styles from '../Tools/Styles'
+import styles from '../../Tools/Styles'
 
 class MessageInbox extends React.Component {
   static navigationOptions = {

@@ -7,6 +7,7 @@ import Type from '../Type'
 import Recap from '../Recap'
 import Data from '../Data'
 import BloodGlucose from '../BloodGlucose'
+import MainComponent from '../../MainComponent'
 
 const WelcomeStackNavigator = createStackNavigator({
   Welcome: { //First screen of the application
@@ -55,6 +56,12 @@ const WelcomeStackNavigator = createStackNavigator({
     screen: BloodGlucose,
     navigationOptions:{
       title: 'Blood glucose'
+    }
+  },
+  MainComponent:{
+    screen: MainComponent,
+    navigationOptions:{
+      title: 'Diabetes Diary'
     }
   }
 })

@@ -9,10 +9,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-import styles from '../Tools/Styles'
+import styles from '../../Tools/Styles'
 
-import insulinIcon from '../Images/insulin_syringe.png'
-import h1 from '../Images/Help/tutorial_homescreen.png'
+import insulinIcon from '../../Images/insulin_syringe.png'
+import h1 from '../../Images/Help/tutorial_homescreen.png'
 
 
 class WelcomePage extends React.Component {
