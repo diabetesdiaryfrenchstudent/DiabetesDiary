@@ -2,9 +2,9 @@
 
 import React from 'react'
 import {View, ScrollView, StyleSheet, Text, Image, TouchableOpacity, Linking} from 'react-native'
-
-import styles from '../../Tools/Styles'
-import NSEImage from '../../Images/NSEImage.png'
+import Header from './Header/Header'
+import styles from '../Tools/Styles'
+import NSEImage from '../Images/NSEImage.png'
 
 class About extends React.Component {
   static navigationOptions = {
@@ -15,6 +15,7 @@ class About extends React.Component {
 
       return (
         <View style={styles.main_container}>
+          <Header name="Settings" nav={this.props.navigation}/>
         <View style={{flex:2, margin: 5}}>
 
             <Text style={styles.TextTitle}>Your own responsibility</Text>

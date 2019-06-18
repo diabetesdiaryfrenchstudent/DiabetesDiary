@@ -1,4 +1,5 @@
-import { createStackNavigator , createAppContainer } from 'react-navigation'
+import { createStackNavigator , createAppContainer,DrawerItems, DrawerNavigation, DrawerActions  } from 'react-navigation'
+import React, {Component} from 'react'
 import Welcome from '../Welcome'
 import Sexe from '../Sexe'
 import Color from '../Color'
@@ -8,8 +9,11 @@ import Recap from '../Recap'
 import Data from '../Data'
 import BloodGlucose from '../BloodGlucose'
 import MainComponent from '../../MainComponent'
+import Icon from "react-native-vector-icons/Entypo"
+
 
 const WelcomeStackNavigator = createStackNavigator({
+
   Welcome: { //First screen of the application
     screen: Welcome,
     navigationOptions: {
@@ -57,13 +61,15 @@ const WelcomeStackNavigator = createStackNavigator({
     navigationOptions:{
       title: 'Blood glucose'
     }
-  },
-  MainComponent:{
-    screen: MainComponent,
-    navigationOptions:{
-      title: 'Diabetes Diary'
-    }
-  }
+  },  MainComponent:{
+      screen: MainComponent,
+      navigationOptions:{
+        title: 'Welcome',
+        header:null
+      }
+
+    },
+
 })
 
 export default createAppContainer(WelcomeStackNavigator)

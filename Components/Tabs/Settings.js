@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from 'react-native'
 import Modal from 'react-native-modal'
 import { Divider, CheckBox } from 'react-native-elements'
-
+import Header from '../Header/Header'
 import styles from '../../Tools/Styles'
 
 class Settings extends React.Component {
@@ -31,7 +31,9 @@ class Settings extends React.Component {
 
   render() {
       return (
+
         <View style={styles.main_container}>
+          <Header name="Settings" nav={this.props.navigation}/>
           <View style={{flexDirection: 'row'}}>
             {this._renderButton('Your name', () => this.setState({ visibleModal: 1 }))}
             {this._renderButton('Focus area', () => this.setState({ visibleModal: 2 }))}

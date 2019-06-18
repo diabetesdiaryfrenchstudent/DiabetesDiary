@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
-
+import Header from '../Header/Header'
 import styles from '../../Tools/Styles'
 
 class PersonalDataTools extends React.Component {
@@ -11,11 +11,13 @@ class PersonalDataTools extends React.Component {
   }
   render() {
       return (
-        <TouchableOpacity style={styles.main_container}>
+
+        <View style={styles.main_container}>
+          <Header name="PersonalDataTools" nav={this.props.navigation}/>
           <View style={styles.box}>
             <Text>We'll see later</Text>
           </View>
-        </TouchableOpacity>
+        </View>
       )
   }
 }

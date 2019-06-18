@@ -2,8 +2,8 @@
 
 import React from 'react'
 import {View, ScrollView, StyleSheet, Text, Image, TouchableOpacity, Linking} from 'react-native'
-import DataStorageInfo from  '../../Components/Tabs/DataStorageInfo'
-
+import DataStorageInfo from  '../../Components/DataStorageInfo'
+import Header from '../Header/Header'
 import styles from '../../Tools/Styles'
 import NSEImage from '../../Images/NSEImage.png'
 
@@ -16,6 +16,7 @@ class About extends React.Component {
   render() {
       return (
         <View style={styles.main_container}>
+          <Header name="About" nav={this.props.navigation}/>
         <View style={{flex:2, margin: 5}}>
 
             <Text style={styles.Textcopyright}>Version: 2.0 (8963bfe)</Text>

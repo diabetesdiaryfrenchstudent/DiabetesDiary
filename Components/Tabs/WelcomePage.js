@@ -14,11 +14,9 @@ import styles from '../../Tools/Styles'
 import insulinIcon from '../../Images/insulin_syringe.png'
 import h1 from '../../Images/Help/tutorial_homescreen.png'
 
-
+import Header from '../Header/Header'
 class WelcomePage extends React.Component {
-  static navigationOptions = {
-    title: 'My Diary',
-  }
+
 
   constructor(props){
     super(props)
@@ -81,7 +79,9 @@ _helpContent = () => (
 
   render() {
       return (
+
         <View style={styles.main_container}>
+        <Header name="Welcome" nav={this.props.navigation}/>
           <TouchableOpacity style={{flex:1,justifyContent: 'center', alignItems: 'center'}} onPress={() => this.props.navigation.navigate('Goals')}>
             <Text>Display goals</Text>
           </TouchableOpacity>

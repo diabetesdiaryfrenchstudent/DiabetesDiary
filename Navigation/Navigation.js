@@ -3,8 +3,7 @@ import React, {Component} from 'react'
 import { TouchableOpacity, View, Text, Image, ScrollView, Button, TouchableHighlight} from 'react-native'
 import { createStackNavigator, createAppContainer, createDrawerNavigator, withNavigation } from 'react-navigation'
 import { DrawerItems, DrawerNavigation, DrawerActions } from 'react-navigation'
-import Icon from "react-native-vector-icons/Entypo"
-import Modal from 'react-native-modal';
+
 
 import logo from '../Images/logo.png'
 
@@ -14,124 +13,18 @@ import PersonalDataTools from '../Components/Tabs/PersonalDataTools'
 import Settings from '../Components/Tabs/Settings'
 import MessageInbox from '../Components/Tabs/MessageInbox'
 import About from '../Components/Tabs/About'
-import DataStorageInfo from  '../Components/Tabs/DataStorageInfo'
 import ListOfEntries from  '../Components/Tabs/ListOfEntries'
-import AddData from  '../Components/Tabs/AddData'
 import Graph from  '../Components/Tabs/Graph'
-import Help from  '../Components/Tabs/Help'
 
 
-/** Create the stack navigation */
-const WPStackNavigator = createStackNavigator({
-    WelcomePage: {
-    screen: WelcomePage,
-    navigationOptions: props => ({
-      title: 'Diabetes Diary',
-      headerLeft:
-         <Icon name='menu'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />,
-      headerRight:
-        <Icon name='help'
-        style={{ fontSize:25, marginRight: 15}}
-        onPress={ () => WelcomePage._helpContent() }
-        />
-    })
-  }, Goals: {
-    screen: Goals,
-    navigationOptions: props => ({
-      title: 'Goals',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  ListOfEntries: {
-    screen: ListOfEntries,
-    navigationOptions: props => ({
-      title: 'List of entries',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  PersonalDataTools: {
-    screen: PersonalDataTools,
-    navigationOptions: props => ({
-      title: 'Personal Data Tools',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  Settings: {
-    screen: Settings,
-    navigationOptions: props => ({
-      title: 'Settings',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  MessageInbox: {
-    screen: MessageInbox,
-    navigationOptions: props => ({
-      title: 'Message Inbox',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  About: {
-    screen: About,
-    navigationOptions: props => ({
-      title: 'About',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  DataStorageInfo: {
-    screen: DataStorageInfo,
-    navigationOptions: props => ({
-      title: 'Data Storage',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  AddData: {
-    screen: AddData,
-    navigationOptions: props => ({
-      title: 'Add Data',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />})
-  },  Graph: {
-    screen: Graph,
-    navigationOptions: props => ({
-      title: 'Graph',
-      headerLeft:
-         <Icon name='menu'
-         type='Entypo'
-         style={{ fontSize:30, marginLeft: 15}}
-         onPress={() => props.navigation.openDrawer() }
-        />
-    })
-  },
-})
 
+
+//       headerRight:
+//         <Icon name='help'
+//         style={{ fontSize:25, marginRight: 15}}
+//         onPress={ () => WelcomePage._helpContent() }
+//         />
+//
 
 /** Create the header for the drawer navigation menu */
 const DrawerContent = (props) => (
@@ -156,7 +49,7 @@ const DrawerContent = (props) => (
 /** Create the drawer navigation menu */
 const DrawerNavigator = createDrawerNavigator({
   WelcomePage: {
-    screen: WPStackNavigator,
+    screen: WelcomePage,
     title: 'My Diabetes Diary'
   }, Graph: {
     screen: Graph,

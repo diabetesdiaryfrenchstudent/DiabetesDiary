@@ -6,6 +6,7 @@ import styles from './Styles'
 import AutoHeightImage from 'react-native-auto-height-image';
 import guy from '../../Images/People/M_recap.png'
 import woman from '../../Images/People/W_recap.png'
+import { StackActions, NavigationActions } from 'react-navigation';
 
 class Recap extends React.Component {
   constructor(props) {
@@ -116,7 +117,10 @@ class Recap extends React.Component {
   }
 
   _buttonClick = () => {
+
     this.props.navigation.navigate("MainComponent")
+    //AS it's the last action, we reset the stack in order to prevent user to go back
+    this.props.navigation.dispatch(resetAction);
   }
   _screenClick = (screen) => {
     this.props.navigation.navigate(screen)
@@ -150,6 +154,10 @@ const mapStateToProps = (state) => {
 }
 
 
-
+//Constante for reset the stack
+const resetAction = StackActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'Recap' })],
+});
 
 export default connect(mapStateToProps)(Recap)

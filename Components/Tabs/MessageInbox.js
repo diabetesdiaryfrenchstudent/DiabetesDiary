@@ -1,6 +1,7 @@
 // Components/MessageInbox.js
 
 import React from 'react'
+import Header from '../Header/Header'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 //Might use Panel : import Panel from 'react-native-panel';
 
@@ -12,11 +13,12 @@ class MessageInbox extends React.Component {
   }
   render() {
       return (
-        <TouchableOpacity style={styles.main_container}>
+        <View style={styles.main_container}>
+          <Header name="Message Inbox" nav={this.props.navigation}/>
           <View>
             <Text>Create an inbox to see messages</Text>
           </View>
-        </TouchableOpacity>
+        </View>
       )
   }
 }
