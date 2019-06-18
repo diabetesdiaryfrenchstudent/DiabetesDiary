@@ -31,6 +31,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     margin:4,
   },
+  settingsBox: {
+    height: 50,
+    justifyContent: 'center',
+  },
 
   //Texts
   Textcopyright: {
@@ -74,8 +78,7 @@ export default StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 4,
-    width: 250
+    borderRadius: 4
   },
   textButton:{
     color: 'rgb(255, 255, 255)',

@@ -5,7 +5,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Button, Image} from 'react-nat
 import { DrawerActions } from 'react-navigation'
 import Modal from 'react-native-modal';
 
-import AntDesignIcon from 'react-native-vector-icons/AntDesign'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
@@ -93,18 +93,12 @@ _helpContent = () => (
           </TouchableOpacity>
 
           <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginRight: 28}}>
-          <TouchableOpacity onPress={ () => this.setState({ visibleModal: 2 })} >
-            <View style={styles.CircleShapeView}>
-              <AntDesignIcon name='pluscircleo' style={{fontSize:50}} />
-            </View>
-          </TouchableOpacity>
+          {this._renderIconButton(AntDesign, 'pluscircleo', () => this.setState({ visibleModal: 2 }))}
 
             <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 2} style={styles.bottomModal}>
-              <View>
                 <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
                   {this._renderModalContentAdd()}
                 </TouchableOpacity>
-              </View>
             </Modal>
           </View>
         </View>
