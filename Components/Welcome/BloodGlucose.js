@@ -49,7 +49,7 @@ class Name extends React.Component {
 
   onSubmit() {
     let errors = {};
-    let allGood=false;
+    let toLow=false;
     let min;
     let max;
     ['min', 'max']
@@ -59,40 +59,48 @@ class Name extends React.Component {
         if (!value) {
           errors[name] = 'Should not be empty';
         }
-        else if (value.length > 20) {
-          errors[name] = 'Too long';
-        }
+        else if (value < 1) {
+          errors[name] = 'Too low';
+          console.log("Inférieur a 1")
+          toLow=true;
 
-        else {
-          allGood=true;
-          if(name==='min'){
-            min=value
+        }
+        else if(!toLow) {
+          toLow=false;
+          if (name === 'min') {
+            min = value
+            const action = { type: "TOGGLE_MIN", value: min }
+            //Send to the store the value and the type of action
+            this.props.dispatch(action)
           }
-          else{
-            max=value
+          else {
+            console.log(min)
+            console.log(value)
+            if (min >= value) {
+
+              errors[name] = 'The max should be higher than min'
+            } else {
+              max = value
+              const action2 = { type: "TOGGLE_MAX", value: max }
+              //Send to the store the value and the type of action
+              this.props.dispatch(action2)
+
+              if (this.props.param.endInit) {
+                this.props.navigation.navigate("Recap")
+              } else {
+                const action3 = { type: "TOGGLE_END", value: true }
+                this.props.dispatch(action3)
+
+                //AS it's the last action, we reset the stack in order to prevent user to go back
+                this.props.navigation.dispatch(resetAction);
+              }
+            }
+
           }
         }
       });
 
-      if(allGood){
-        const action ={type: "TOGGLE_MIN", value:min}
-        //Send to the store the value and the type of action
-        this.props.dispatch(action)
 
-        const action2 ={type: "TOGGLE_MAX", value:max}
-        //Send to the store the value and the type of action
-        this.props.dispatch(action2)
-        //Check if the initialization is over
-        if (this.props.param.endInit) {
-          this.props.navigation.navigate("Recap")
-        } else {
-          const action3 = {type :"TOGGLE_END", value:true}
-          this.props.dispatch(action3)
-
-          //AS it's the last action, we reset the stack in order to prevent user to go back
-          this.props.navigation.dispatch(resetAction);
-        }
-      }
 
     this.setState({ errors });
   }
@@ -105,7 +113,7 @@ class Name extends React.Component {
 
   render() {
     let { errors = {}, ...data } = this.state;
-    let { min = 4,max =10 } = data;
+    let { min = 4, max = 10 } = data;
     return (
       <View style={[styles.main_container, { backgroundColor: this.props.param.color }]}>
         <ImageBackground source={require('../../Images/blue.png')} imageStyle={{ resizeMode: 'stretch' }} style={styles.img_bulle}>
@@ -183,7 +191,7 @@ class Name extends React.Component {
 
 }
 const stylesP = StyleSheet.create({
-  textInput:{
+  textInput: {
     flexDirection: 'row',
   }
 })
