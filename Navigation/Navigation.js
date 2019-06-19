@@ -18,14 +18,6 @@ import Graph from  '../Components/Tabs/Graph'
 
 
 
-
-//       headerRight:
-//         <Icon name='help'
-//         style={{ fontSize:25, marginRight: 15}}
-//         onPress={ () => WelcomePage._helpContent() }
-//         />
-//
-
 /** Create the header for the drawer navigation menu */
 const DrawerContent = (props) => (
   <View>
