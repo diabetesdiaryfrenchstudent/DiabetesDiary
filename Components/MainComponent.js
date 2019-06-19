@@ -8,16 +8,6 @@ import { DrawerItems, DrawerNavigation, DrawerActions } from 'react-navigation'
 
 export default class App extends React.Component {
 
-//   static navigationOptions = ({navigation})=>{
-//     return{
-//     headerLeft:
-//           <Button title='menu'
-//            style={{ fontSize:30, marginLeft: 15}}
-//            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-//             />,
-//   };
-// };
-
   componentDidMount(){
     this.props.navigation.setParams({openDrawer: this._menu});
   }
@@ -25,8 +15,8 @@ export default class App extends React.Component {
     console.log(this.props.navigation.getChildNavigation)
     return (
       <Provider store={Store}>
-    <Navigation/>
-    </Provider>
+        <Navigation/>
+      </Provider>
     );
   }
 

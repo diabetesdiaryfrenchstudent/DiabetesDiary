@@ -15,7 +15,9 @@ import MessageInbox from '../Components/Tabs/MessageInbox'
 import About from '../Components/Tabs/About'
 import ListOfEntries from  '../Components/Tabs/ListOfEntries'
 import Graph from  '../Components/Tabs/Graph'
-
+import AddData from '../Components/AddData'
+import DataStorageInfo from '../Components/DataStorageInfo'
+import Hidden from '../Navigation/Hidden'
 
 
 /** Create the header for the drawer navigation menu */
@@ -61,7 +63,20 @@ const DrawerNavigator = createDrawerNavigator({
   }, About: {
     screen: About,
     title: 'About'
+  },
+  AddData: {
+    screen: AddData,
+    navigationOptions:{
+      drawerLabel:<Hidden/>
+    }
+  },
+  DataStorageInfo: {
+    screen: DataStorageInfo,
+    navigationOptions:{
+      drawerLabel:<Hidden/>
+    }
   }
+
 },{
   contentComponent: DrawerContent
 })
