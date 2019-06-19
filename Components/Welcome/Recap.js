@@ -85,6 +85,13 @@ class Recap extends React.Component {
             <Text style={stylesP.h2}>Data : </Text>
             <Text style={styles.content}>{data}</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={()=> this._screenClick("BloodGlucose")} style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Text style={stylesP.h2}>Seuil : </Text>
+            <Text style={stylesP.h2}>{this.props.param.min}</Text>
+            <Text style={styles.content}> mmmol/L / </Text>
+            <Text style={stylesP.h2}>{this.props.param.max}</Text>
+            <Text style={styles.content}> mmol/L</Text>
+            </TouchableOpacity>
             <Button title='Valider' onPress={() => this._buttonClick()} />
           </View>
           <View style={styles.guy}>
@@ -157,7 +164,7 @@ const mapStateToProps = (state) => {
 //Constante for reset the stack
 const resetAction = StackActions.reset({
   index: 0,
-  actions: [NavigationActions.navigate({ routeName: 'Recap' })],
+  actions: [NavigationActions.navigate({ routeName: 'MainComponent' })],
 });
 
 export default connect(mapStateToProps)(Recap)

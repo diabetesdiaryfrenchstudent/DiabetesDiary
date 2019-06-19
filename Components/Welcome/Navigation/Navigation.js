@@ -61,7 +61,8 @@ const WelcomeStackNavigator = createStackNavigator({
     navigationOptions:{
       title: 'Blood glucose'
     }
-  },  MainComponent:{
+  },
+   MainComponent:{
       screen: MainComponent,
       navigationOptions:{
         title: 'Welcome',
