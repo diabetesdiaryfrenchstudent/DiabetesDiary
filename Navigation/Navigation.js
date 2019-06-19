@@ -45,6 +45,9 @@ const DrawerNavigator = createDrawerNavigator({
   WelcomePage: {
     screen: WelcomePage,
     title: 'My Diabetes Diary'
+  }, Goals: {
+    screen: Goals,
+    title: 'Goals'
   }, Graph: {
     screen: Graph,
     title: 'Graph'
@@ -63,14 +66,12 @@ const DrawerNavigator = createDrawerNavigator({
   }, About: {
     screen: About,
     title: 'About'
-  },
-  AddData: {
+  }, AddData: {
     screen: AddData,
     navigationOptions:{
       drawerLabel:<Hidden/>
     }
-  },
-  DataStorageInfo: {
+  }, DataStorageInfo: {
     screen: DataStorageInfo,
     navigationOptions:{
       drawerLabel:<Hidden/>

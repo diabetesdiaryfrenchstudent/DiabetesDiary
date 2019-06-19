@@ -67,9 +67,6 @@ onPress : action when clicking */
 
         <View style={styles.main_container}>
         <Header name="My diary" nav={this.props.navigation}/>
-          <TouchableOpacity style={{flex:1,justifyContent: 'center', alignItems: 'center'}} onPress={() => this.props.navigation.navigate('Goals')}>
-            <Text>Display goals</Text>
-          </TouchableOpacity>
           <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('Graph')}>
             <Text>Display graph</Text>
           </TouchableOpacity>
