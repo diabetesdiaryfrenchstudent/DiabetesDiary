@@ -33,17 +33,32 @@ export default class App extends React.Component {
 
     return (
       <View>
-        <Header
-          leftComponent={<Icon name='menu' style={{ fontSize:30, marginLeft: 15}} onPress={()=>nav.openDrawer()}/> }
-          centerComponent={<Text> {name}</Text>}
-          rightComponent={<Icon name='help' style={{ fontSize:25, marginRight: 15}} onPress={()=> this.setState({ visibleModal: 1 })}/>}
+        <Header backgroundColor='rgb(75,176,221)' placement='left'
+          leftComponent={<Icon name='menu' style={stylesHeader.icons} onPress={()=>nav.openDrawer()}/> }
+          centerComponent={<Text style={stylesHeader.text}> {name}</Text>}
+          rightComponent={<Icon name='help' style={stylesHeader.icons} onPress={()=> this.setState({ visibleModal: 1 })}/>}
         />
 
         <Modal isVisible={this.state.visibleModal === 1} onRequestClose={() => {this.setState({ visibleModal: null})}}>
           {this._renderModalContent()}
         </Modal>
       </View>
-
     );
+
   }
 }
+
+
+const stylesHeader = StyleSheet.create({
+
+  icons:{
+    fontSize: 30,
+    margin: 10,
+    color:'#ffffff'
+  },
+  text:{
+    fontSize: 30,
+    fontWeight: 'bold',
+    color:'#ffffff'
+  }
+})
