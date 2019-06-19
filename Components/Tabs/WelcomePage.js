@@ -66,7 +66,7 @@ onPress : action when clicking */
       return (
 
         <View style={styles.main_container}>
-        <Header name="Welcome" nav={this.props.navigation}/>
+        <Header name="My diary" nav={this.props.navigation}/>
           <TouchableOpacity style={{flex:1,justifyContent: 'center', alignItems: 'center'}} onPress={() => this.props.navigation.navigate('Goals')}>
             <Text>Display goals</Text>
           </TouchableOpacity>
