@@ -8,6 +8,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 import guy from '../../Images/People/M_sexe.png'
 import woman from '../../Images/People/W_sexe.png'
 import CheckBox from './CheckBox'
+import Modal from 'react-native-modal';
 
 
 class Data extends React.Component {
@@ -33,6 +34,19 @@ class Data extends React.Component {
     }
 
   }
+  _renderButton = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={stylesP.button}>
+        <Text>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+  _renderModalContent = () => (
+    <View style={stylesP.modalContent}>
+      <Text>You cannot monitor both calories and carbs</Text>
+      {this._renderButton('Ok', () => this.setState({ visibleModal: null }))}
+    </View>
+  );
 
   _changeCheckBox_bg=()=>{
     this.setState({bg: !this.state.bg})
@@ -51,15 +65,26 @@ class Data extends React.Component {
     this.setState({act: !this.state.act})
   }
   _changeCheckBox_car=()=>{
+    if(this.state.cal){
+      this.setState({cal: !this.state.cal})
+      this.setState({ visibleModal: 1 })
+    }
     this.setState({car: !this.state.car})
   }
   _changeCheckBox_cal=()=>{
+    if(this.state.car){
+      this.setState({car: !this.state.car})
+        this.setState({ visibleModal: 1 })
+    }
     this.setState({cal: !this.state.cal})
   }
   render() {
     return (
       <View style={[styles.main_container, { backgroundColor: this.props.param.color }]}>
         <ImageBackground source={require('../../Images/blue.png')} imageStyle={{ resizeMode: 'stretch' }} style={styles.img_bulle}>
+        <Modal isVisible={this.state.visibleModal === 1} onRequestClose={() => {this.setState({ visibleModal: null})}}>
+          {this._renderModalContent()}
+        </Modal>
           <View style={styles.bulle}>
             <View style={{ flexDirection: 'row' }}>
               <View>
@@ -171,6 +196,23 @@ class Data extends React.Component {
 const stylesP = StyleSheet.create({
   h2: {
     fontSize: 20,
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  button: {
+    backgroundColor: 'lightblue',
+    padding: 12,
+    margin: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
   },
 
 })
