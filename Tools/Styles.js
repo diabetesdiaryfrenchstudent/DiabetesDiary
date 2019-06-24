@@ -95,6 +95,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10
   },
+  modalContentUnits: {
+    backgroundColor: 'white',
+    padding: 12 ,
+    borderRadius: 10,
+  },
   bottomModal: {
     alignItems: 'flex-end',
     justifyContent: 'flex-end'

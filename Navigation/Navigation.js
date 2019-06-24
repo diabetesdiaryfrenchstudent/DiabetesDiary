@@ -18,6 +18,7 @@ import Graph from  '../Components/Tabs/Graph'
 import AddData from '../Components/AddData'
 import DataStorageInfo from '../Components/DataStorageInfo'
 import Hidden from '../Navigation/Hidden'
+import MainComponentHide from '../Components/Tabs/MainComponentHide'
 
 
 /** Create the header for the drawer navigation menu */
@@ -76,8 +77,12 @@ const DrawerNavigator = createDrawerNavigator({
     navigationOptions:{
       drawerLabel:<Hidden/>
     }
+  }, MainComponentHide: {
+    screen: MainComponentHide,
+    navigationOptions:{
+      drawerLabel:<Hidden/>
+    }
   }
-
 },{
   contentComponent: DrawerContent
 })
