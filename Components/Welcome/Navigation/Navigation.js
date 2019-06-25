@@ -14,6 +14,12 @@ import Icon from "react-native-vector-icons/Entypo"
 
 const WelcomeStackNavigator = createStackNavigator({
 
+  MainComponent:{
+    screen: MainComponent,
+    navigationOptions:{
+      title: 'Welcome',
+      header:null
+    },
   Welcome: { //First screen of the application
     screen: Welcome,
     navigationOptions: {
@@ -61,14 +67,8 @@ const WelcomeStackNavigator = createStackNavigator({
     navigationOptions:{
       title: 'Blood glucose'
     }
-  },  MainComponent:{
-      screen: MainComponent,
-      navigationOptions:{
-        title: 'Welcome',
-        header:null
-      }
-
-    },
+  }
+  },
 
 })
 

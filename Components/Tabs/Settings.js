@@ -10,6 +10,7 @@ import styles from '../../Tools/Styles'
 class Settings extends React.Component {
   state = {
     visibleModal: null,
+    checkedBluetooth: false,
     checkedNotif: false,
     BGUnitG: false,
     checkedWL: false,
@@ -25,15 +26,50 @@ class Settings extends React.Component {
     </TouchableOpacity>
   );
 
-  _renderModalContent = () => (
-    <View style={styles.modalContent}>
-        <Text> Design modals </Text>
-        {this._renderButton('Close', () => this.setState({ visibleModal: null }))}
-    </View>
-  );
+  _messageNotifications = () => {
+    if (this.checkedNotif) {
+      return (<Text style={styles.TextInfos}>Show message notifications </Text>)
+    } else {
+      return (<Text style={styles.TextInfos}>Do not show message notifications </Text>)
+    }
+  }
 
+  _BluetoothParam = () => {
+    if (this.checkedBluetooth) {
+      return (
+      <View style={styles.settingsBox}>
+          <Text style={{paddingLeft: 8}}> Device </Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              {this._renderButton('Polymap',this.setState({visibleModal: Polymap}))}
+              {this._renderButton('Fora',this.setState({visibleModal: Fora}))}
+          </View>
+
+          <Modal isVisible={this.state.visibleModal === Polymap} onRequestClose={() => {this.setState({ visibleModal: null })}}>
+              <View style={styles.modalContent}>
+                  <Text style={styles.smallTitles}> Service name </Text>
+                  <Text>See later</Text>
+                  <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
+              </View>
+          </Modal>
+
+
+          <Modal isVisible={this.state.visibleModal === Fora} onRequestClose={() => {this.setState({ visibleModal: null })}}>
+              <View style={styles.modalContentUnits}>
+                  <Text style={styles.smallTitles}> Manual import </Text>
+                  <Text>See later</Text>
+                  <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
+              </View>
+          </Modal>
+      </View>
+      )
+    } else {
+      return (null)
+    }
+  }
 
   render() {
+    {this._messageNotifications()}
+
       return (
 
         <View style={styles.main_container}>
@@ -41,42 +77,59 @@ class Settings extends React.Component {
 
           <ScrollView>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.props.navigation.navigate('MainComponentHide')}>
-              <Text>   Your informations (Focus area, goals, diabetes type..) </Text>
+              <Text style={{paddingLeft: 8}}> Your informations </Text>
+              <Text style={styles.TextInfos}> Change your name, gender, focus area, goals..</Text>
             </TouchableOpacity>
               <Divider/>
-            <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 1 })}>
-              <Text>   Bluetooth </Text>
-            </TouchableOpacity>
+            <View style={styles.settingsBox}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{flexDirection: 'column'}}>
+                  <Text style={{paddingLeft: 8}}> Bluetooth </Text>
+                  <Text style={styles.TextInfos}> Support for transfering blood glucose values via Bluetooth </Text>
+                </View>
+                <CheckBox checked={this.state.checkedBluetooth} onPress={() => this.setState({checkedBluetooth: !this.state.checkedBluetooth})} />
+                {this._BluetoothParam()}
+              </View>
+            </View>
             <Divider/>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 2 })}>
-              <Text>   Blood glucose units </Text>
+              <Text style={{paddingLeft: 8}}> Blood glucose units </Text>
+              <Text style={styles.TextInfos}> Choose your preferred unit</Text>
             </TouchableOpacity>
             <Divider/>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 3 })}>
-              <Text>   Weight units </Text>
+              <Text style={{paddingLeft: 8}}> Weight units </Text>
+              <Text style={styles.TextInfos}> Choose your preferred unit</Text>
             </TouchableOpacity>
             <Divider/>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 4 })}>
-              <Text>   Set food database language </Text>
+              <Text style={{paddingLeft: 8}}> Set food database language </Text>
+              <Text style={styles.TextInfos}> Choose language of food database</Text>
             </TouchableOpacity>
             <Divider/>
             <View style={styles.settingsBox} >
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text>   Message notifications </Text>
-              <CheckBox checked={this.state.checkedNotif} onPress={() => this.setState({checkedNotif: !this.state.checkedNotif})} />
+                <View style={{flexDirection: 'column'}}>
+                  <Text style={{paddingLeft: 8}}> Message notifications </Text>
+                  {this._messageNotifications()}
+                </View>
+                <CheckBox checked={this.state.checkedNotif} onPress={() => this.setState({checkedNotif: !this.state.checkedNotif})} />
               </View>
             </View>
             <Divider/>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 5 })}>
-              <Text>   RunKeeper integration </Text>
+              <Text style={{paddingLeft: 8}}> RunKeeper integration </Text>
+              <Text style={styles.TextInfos}> Administer your Runkeeper integration here </Text>
             </TouchableOpacity>
             <Divider/>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 6 })}>
-              <Text>   Pebble integration </Text>
+              <Text style={{paddingLeft: 8}}> Pebble integration </Text>
+              <Text style={styles.TextInfos}> Connect Diabetes Diary to your Pebble smartwatch </Text>
             </TouchableOpacity>
             <Divider/>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 7 })}>
-              <Text>   Tracking app usage </Text>
+              <Text style={{paddingLeft: 8}}> Tracking app usage </Text>
+              <Text style={styles.TextInfos}> Enable or disable the app usage tracking to help researchers </Text>
             </TouchableOpacity>
             <Divider/>
           </ScrollView>
@@ -85,73 +138,67 @@ class Settings extends React.Component {
 
 
         <Modal isVisible={this.state.visibleModal === 1} onRequestClose={() => {this.setState({ visibleModal: null})}}>
-          <TouchableOpacity style={{flex:1, justifyContent: 'center', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
             <View style={styles.modalContent}>
-                <Text>See new Bluetooth interface with Manon</Text>
-                {this._renderButton('Close', () => this.setState({ visibleModal: null }))}
+                <Text style={styles.smallTitles}> Bluetooth </Text>
+                <Text>See later</Text>
+                <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
             </View>
-          </TouchableOpacity>
         </Modal>
 
 
         <Modal isVisible={this.state.visibleModal === 2} onRequestClose={() => {this.setState({ visibleModal: null})}}>
             <View style={styles.modalContentUnits}>
-                <Text> Blood glucose units </Text>
-                  <CheckBox  title='mg/dL' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.BGUnitG} onPress={() => this.setState({BGUnitG: !this.state.BGUnitG})}/>
-                  <CheckBox  title='mmol/L' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={!this.state.BGUnitG} onPress={() => this.setState({BGUnitG: !this.state.BGUnitG})}/>
-                <View>{this._renderButton('Valider', () => this.setState({ visibleModal: null }))}</View>
+                <Text style={styles.smallTitles}> Blood glucose units </Text>
+                <CheckBox  title='mg/dL' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.BGUnitG} onPress={() => {this.setState({BGUnitG: true}), this.setState({visibleModal:null})}}/>
+                <CheckBox  title='mmol/L' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={!this.state.BGUnitG} onPress={() => {this.setState({BGUnitG: false}), this.setState({visibleModal:null})}}/>
+                <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
             </View>
         </Modal>
 
         <Modal isVisible={this.state.visibleModal === 3} onRequestClose={() => {this.setState({ visibleModal: null})}}>
               <View style={styles.modalContentUnits}>
-              <Text> Weight units </Text>
-                <CheckBox  title='kg' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={!this.state.checkedWL} onPress={() => this.setState({checkedWL: !this.state.checkedWL})}/>
-                <CheckBox  title='lbs' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.checkedWL} onPress={() => this.setState({checkedWL: !this.state.checkedWL})}/>
-              <View>{this._renderButton('Valider', () => this.setState({ visibleModal: null }))}</View>
+                <Text style={styles.smallTitles}> Weight units </Text>
+                <CheckBox  title='kg' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={!this.state.checkedWL} onPress={() => {this.setState({checkedWL: false}), this.setState({visibleModal:null})}}/>
+                <CheckBox  title='lbs' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.checkedWL} onPress={() => {this.setState({checkedWL: true}), this.setState({visibleModal:null})}}/>
+                <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
               </View>
         </Modal>
 
         <Modal isVisible={this.state.visibleModal === 4} onRequestClose={() => {this.setState({ visibleModal: null})}}>
           <View style={styles.modalContentUnits}>
-            <Text> Set food database language </Text>
-              <CheckBox  title='Same as the app language' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => this.setState({language: !this.state.language})}/>
-              <CheckBox  title='English' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => this.setState({language: !this.state.language})}/>
-              <CheckBox  title='Norsk' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => this.setState({language: !this.state.language})}/>
-              <CheckBox  title='Czech' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => this.setState({language: !this.state.language})}/>
-            <View>{this._renderButton('Valider', () => this.setState({ visibleModal: null }))}</View>
+            <Text style={styles.smallTitles}> Food database language </Text>
+            <CheckBox title='Same as the app language' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => {this.setState({language: !this.state.language}), this.setState({visibleModal:null})}}/>
+            <CheckBox title='English' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => {this.setState({language: !this.state.language}), this.setState({visibleModal:null})}}/>
+            <CheckBox title='Norsk' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => {this.setState({language: !this.state.language}), this.setState({visibleModal:null})}}/>
+            <CheckBox title='Czech' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.language} onPress={() => {this.setState({language: !this.state.language}), this.setState({visibleModal:null})}}/>
+            <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
           </View>
         </Modal>
 
         <Modal isVisible={this.state.visibleModal === 5} onRequestClose={() => {this.setState({ visibleModal: null})}}>
-          <TouchableOpacity style={{flex:1, justifyContent: 'center', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
             <View style={styles.modalContent}>
+                <Text style={styles.smallTitles}> RunKeeper integration </Text>
                 <Text>See later</Text>
-                {this._renderButton('Valider', () => this.setState({ visibleModal: null }))}
+                <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
             </View>
-          </TouchableOpacity>
         </Modal>
 
         <Modal isVisible={this.state.visibleModal === 6} onRequestClose={() => {this.setState({ visibleModal: null})}}>
-          <TouchableOpacity style={{flex:1, justifyContent: 'center', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
             <View style={styles.modalContent}>
+                <Text style={styles.smallTitles}> Pebble integration </Text>
                 <Text>See later</Text>
-                {this._renderButton('Valider', () => this.setState({ visibleModal: null }))}
+                <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
             </View>
-          </TouchableOpacity>
         </Modal>
 
         <Modal isVisible={this.state.visibleModal === 7} onRequestClose={() => {this.setState({ visibleModal: null})}}>
-          <TouchableOpacity style={{flex:1, justifyContent: 'center', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
-            <View style={styles.modalContent}>
-                <Text>Tracking app usage</Text>
-                <CheckBox  title='Enable the tracking of the app usage to help researchers' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.TrackingEnable} onPress={() => this.setState({TrackingEnable: !this.state.TrackingEnable})}/>
-                <CheckBox  title='Disable the tracking of the app usage' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={!this.state.TrackingEnable} onPress={() => this.setState({TrackingEnable: !this.state.TrackingEnable})}/>
-                {this._renderButton('Valider', () => this.setState({ visibleModal: null }))}
-            </View>
-          </TouchableOpacity>
-        </Modal>
-
+            <View style={styles.modalContentUnits}>
+              <Text style={styles.smallTitles}> Tracking app usage to help researchers </Text>
+              <CheckBox  title='Enable' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.TrackingEnable} onPress={() => {this.setState({TrackingEnable: true}), this.setState({visibleModal:null})}}/>
+              <CheckBox  title='Disable' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={!this.state.TrackingEnable} onPress={() => {this.setState({TrackingEnable: false}), this.setState({visibleModal:null})}}/>
+              <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
+          </View>
+      </Modal>
 
       </View>
 
