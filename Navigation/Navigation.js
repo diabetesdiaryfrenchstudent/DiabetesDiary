@@ -15,16 +15,11 @@ import MessageInbox from '../Components/Tabs/MessageInbox'
 import About from '../Components/Tabs/About'
 import ListOfEntries from  '../Components/Tabs/ListOfEntries'
 import Graph from  '../Components/Tabs/Graph'
+import AddData from '../Components/AddData'
+import DataStorageInfo from '../Components/DataStorageInfo'
+import Hidden from '../Navigation/Hidden'
+import MainComponentHide from '../Components/Tabs/MainComponentHide'
 
-
-
-
-//       headerRight:
-//         <Icon name='help'
-//         style={{ fontSize:25, marginRight: 15}}
-//         onPress={ () => WelcomePage._helpContent() }
-//         />
-//
 
 /** Create the header for the drawer navigation menu */
 const DrawerContent = (props) => (
@@ -51,6 +46,9 @@ const DrawerNavigator = createDrawerNavigator({
   WelcomePage: {
     screen: WelcomePage,
     title: 'My Diabetes Diary'
+  }, Goals: {
+    screen: Goals,
+    title: 'Goals'
   }, Graph: {
     screen: Graph,
     title: 'Graph'
@@ -69,6 +67,21 @@ const DrawerNavigator = createDrawerNavigator({
   }, About: {
     screen: About,
     title: 'About'
+  }, AddData: {
+    screen: AddData,
+    navigationOptions:{
+      drawerLabel:<Hidden/>
+    }
+  }, DataStorageInfo: {
+    screen: DataStorageInfo,
+    navigationOptions:{
+      drawerLabel:<Hidden/>
+    }
+  }, MainComponentHide: {
+    screen: MainComponentHide,
+    navigationOptions:{
+      drawerLabel:<Hidden/>
+    }
   }
 },{
   contentComponent: DrawerContent

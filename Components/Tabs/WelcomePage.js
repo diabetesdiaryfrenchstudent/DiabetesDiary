@@ -4,19 +4,17 @@ import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Button, Image} from 'react-native'
 import { DrawerActions } from 'react-navigation'
 import Modal from 'react-native-modal';
+import Header from '../Header/Header'
 
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import insulinIcon from '../../Images/insulin_syringe.png'
 
 import styles from '../../Tools/Styles'
 
-import insulinIcon from '../../Images/insulin_syringe.png'
-import h1 from '../../Images/Help/tutorial_homescreen.png'
 
-import Header from '../Header/Header'
 class WelcomePage extends React.Component {
-
 
   constructor(props){
     super(props)
@@ -59,21 +57,8 @@ onPress : action when clicking */
       {this._renderIconButton(MaterialCommunityIcons, 'bike', () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderIconButton(MaterialCommunityIcons, 'scale-bathroom', () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
       {this._renderIconButton(MaterialCommunityIcons, 'pill', () => {this.props.navigation.navigate('AddData'), this.setState({ visibleModal: null})})}
-
     </View>
   );
-
-/** Display modal with help tutorial images */
-//not used yet bc of unworking header button
-_helpContent = () => (
-    <View>
-    <Modal backdropColor={'rgba(0, 0, 0, 0.50)'} onRequestClose={() => {this.setState({ visibleModal: null})}} isVisible={this.state.visibleModal === 2} style={styles.bottomModal}>
-      <TouchableOpacity style={{flex:1, justifyContent: 'flex-end', marginRight:10}} onPress={()=>this.setState({visibleModal:null})}>
-        <Image source={h1}/>
-      </TouchableOpacity>
-    </Modal>
-    </View>
-);
 
 
 
@@ -81,10 +66,7 @@ _helpContent = () => (
       return (
 
         <View style={styles.main_container}>
-        <Header name="Welcome" nav={this.props.navigation}/>
-          <TouchableOpacity style={{flex:1,justifyContent: 'center', alignItems: 'center'}} onPress={() => this.props.navigation.navigate('Goals')}>
-            <Text>Display goals</Text>
-          </TouchableOpacity>
+        <Header name="My diary" nav={this.props.navigation}/>
           <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('Graph')}>
             <Text>Display graph</Text>
           </TouchableOpacity>

@@ -20,7 +20,7 @@ class MainComponent extends React.Component {
 //   };
 // };
 
-  
+
   render() {
 
     if(this.props.param.endInit){

@@ -52,6 +52,28 @@ export default StyleSheet.create({
   TextBody: {
     textAlign:'justify',
   },
+  TextTouch:{
+    textAlign: 'right',
+    fontSize:20,
+    padding:10,
+    color:'rgb(75,176,221)'
+  },
+  smallTitles:{
+    textAlign: 'center',
+    fontSize: 25,
+    fontWeight: 'bold',
+    color:'rgb(75,176,221)',
+    padding:10
+  },
+  SubTitles:{
+    padding: 7,
+    color: 'rgb(110, 110, 110)'
+  },
+  TextInfos:{
+    paddingLeft: 10,
+    fontSize: 10,
+    color: 'rgb(110, 110, 110)'
+  },
 
   //Buttons
   MenuButton: {
@@ -94,6 +116,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10
+  },
+  modalContentUnits: {
+    backgroundColor: 'white',
+    padding: 12 ,
+    borderRadius: 10,
   },
   bottomModal: {
     alignItems: 'flex-end',

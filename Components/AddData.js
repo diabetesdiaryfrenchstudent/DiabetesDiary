@@ -2,8 +2,8 @@
 
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
-import Header from '../Header/Header'
-import styles from '../../Tools/Styles'
+import Header from './Header/Header'
+import styles from '../Tools/Styles'
 
 class AddData extends React.Component {
   static navigationOptions = {
@@ -12,7 +12,7 @@ class AddData extends React.Component {
   render() {
       return (
         <TouchableOpacity style={styles.main_container}>
-          <Header name="Settings" nav={this.props.navigation}/>
+          <Header name="Add Data" nav={this.props.navigation}/>
           <View style={styles.box}>
             <Text>We'll see later</Text>
           </View>
