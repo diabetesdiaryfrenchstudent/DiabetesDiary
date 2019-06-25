@@ -3,7 +3,7 @@ const initialState = {
   color: "#DDEAF2",
   name: "",
   type: "",
-  endInit: false //Variable to check if the user pass all the initialization screen
+  endInit: true //Variable to check if the user pass all the initialization screen
 }
 
 

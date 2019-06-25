@@ -10,9 +10,18 @@ import Data from '../Data'
 import BloodGlucose from '../BloodGlucose'
 import MainComponent from '../../MainComponent'
 import Icon from "react-native-vector-icons/Entypo"
-
+import MainComponentWelcome from '../../MainComponentWelcome'
 
 const WelcomeStackNavigator = createStackNavigator({
+
+  MainComponentWelcome:{
+    screen: MainComponentWelcome,
+    navigationOptions:{
+      title: 'Welcome',
+      header:null
+    }
+
+  },
 
   Welcome: { //First screen of the application
     screen: Welcome,

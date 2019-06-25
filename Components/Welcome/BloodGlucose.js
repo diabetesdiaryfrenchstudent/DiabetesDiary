@@ -50,55 +50,109 @@ class Name extends React.Component {
   onSubmit() {
     let errors = {};
     let toLow=false;
-    let min;
-    let max;
-    ['min', 'max']
-      .forEach((name) => {
-        let value = this[name].value();
+    let minV;
+    let maxV;
+    let checkMin=false;
+    let checkMax=false;
+    if(!this.min.value){
+      checkMin=false;
+      errors[min]='Sould not be empty'
+    }
+    else if (this.min.value<1){
+      checkMin=false;
+      errors[min]= 'Too low'
+    }
+    else {
+      min = this.min.value
+      checkMin=true;
+    }
 
-        if (!value) {
-          errors[name] = 'Should not be empty';
-        }
-        else if (value < 1) {
-          errors[name] = 'Too low';
-          console.log("Inférieur a 1")
-          toLow=true;
+    if(!this.max.value){
+      checkMax=false;
+      errors[max]='Sould not be empty'
+    }
+    else if (this.max.value<1){
+      checkMax=false;
+      errors[max]= 'Too low'
+    }
+    else if(this.max.value<minV){
+      checkMax=false;
+      errors[max]= 'The max should be higher than min'
+    }
+    else{
+      maxV = this.max.value
+      checkMax=true;
+    }
 
-        }
-        else if(!toLow) {
-          toLow=false;
-          if (name === 'min') {
-            min = value
-            const action = { type: "TOGGLE_MIN", value: min }
-            //Send to the store the value and the type of action
-            this.props.dispatch(action)
-          }
-          else {
-            console.log(min)
-            console.log(value)
-            if (min >= value) {
 
-              errors[name] = 'The max should be higher than min'
-            } else {
-              max = value
-              const action2 = { type: "TOGGLE_MAX", value: max }
-              //Send to the store the value and the type of action
-              this.props.dispatch(action2)
+    if(checkMax&&checkMin){
+      const action = { type: "TOGGLE_MIN", value: minV }
+      //Send to the store the value and the type of action
+      this.props.dispatch(action)
+      const action2 = { type: "TOGGLE_MAX", value: maxV }
+      //Send to the store the value and the type of action
+      this.props.dispatch(action2)
 
-              if (this.props.param.endInit) {
-                this.props.navigation.navigate("Recap")
-              } else {
-                const action3 = { type: "TOGGLE_END", value: true }
-                this.props.dispatch(action3)
+      if (this.props.param.endInit) {
+        this.props.navigation.navigate("Recap")
+      } else {
+        const action3 = { type: "TOGGLE_END", value: true }
+        this.props.dispatch(action3)
 
-                //AS it's the last action, we reset the stack in order to prevent user to go back
-                this.props.navigation.dispatch(resetAction);
-              }
-            }
+        //AS it's the last action, we reset the stack in order to prevent user to go back
+        this.props.navigation.dispatch(resetAction);
+      }
 
-          }
-        }
-      });
+    }
+
+
+    // ['min', 'max']
+    //   .forEach((name) => {
+    //     let value = this[name].value();
+    //
+    //     if (!value) {
+    //       errors[name] = 'Should not be empty';
+    //     }
+    //     else if (value < 1) {
+    //       errors[name] = 'Too low';
+    //       console.log("Inférieur a 1")
+    //       toLow=true;
+    //
+    //     }
+    //     else if(!toLow) {
+    //       toLow=false;
+    //       if (name === 'min') {
+    //         min = value
+    //         const action = { type: "TOGGLE_MIN", value: min }
+    //         //Send to the store the value and the type of action
+    //         this.props.dispatch(action)
+    //       }
+    //       else {
+    //         console.log(min)
+    //         console.log(value)
+    //         if (min >= value) {
+    //
+    //           errors[name] = 'The max should be higher than min'
+    //         } else {
+    //           max = value
+    //           const action2 = { type: "TOGGLE_MAX", value: max }
+    //           //Send to the store the value and the type of action
+    //           this.props.dispatch(action2)
+    //
+    //           if (this.props.param.endInit) {
+    //             this.props.navigation.navigate("Recap")
+    //           } else {
+    //             const action3 = { type: "TOGGLE_END", value: true }
+    //             this.props.dispatch(action3)
+    //
+    //             //AS it's the last action, we reset the stack in order to prevent user to go back
+    //             this.props.navigation.dispatch(resetAction);
+    //           }
+    //         }
+    //
+    //       }
+    //     }
+    //   });
 
 
 

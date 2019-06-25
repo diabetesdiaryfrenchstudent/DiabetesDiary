@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View,Button } from 'react-native';
-import NavigationD from '../Navigation/Navigation'
-import NavigationS from './Welcome/Navigation/Navigation'
+
+import Navigation from './Welcome/Navigation/Navigation'
 import {Provider} from 'react-redux'
 import Store from '../Store/configureStore'
 import Icon from "react-native-vector-icons/Entypo"
 import { DrawerItems, DrawerNavigation, DrawerActions } from 'react-navigation'
 import { connect } from 'react-redux'
 import MainComponentDrawer from './MainComponentDrawer'
-class MainComponent extends React.Component {
+import { StackActions, NavigationActions } from 'react-navigation';
+class MainComponentWelcome extends React.Component {
 
 //   static navigationOptions = ({navigation})=>{
 //     return{
@@ -19,24 +20,24 @@ class MainComponent extends React.Component {
 //             />,
 //   };
 // };
+  componentDidMount(){
+    if(this.props.param.endInit){
 
-  
+
+        this.props.navigation.dispatch(recapReset);
+
+
+    }else{
+      this.props.navigation.dispatch(welcomeReset);
+    }
+  }
+
   render() {
 
-    if(this.props.param.endInit){
-      return (
 
-      <MainComponentDrawer/>
-
-      );
-    }else{
-      return (
-
-      <NavigationS/>
-
-      );
-    }
-
+    return(
+      null
+    )
   }
 
   _menu = ()=>{
@@ -50,4 +51,16 @@ const mapStateToProps = (state) => {
     data: state.dataReducers
   }
 }
-export default connect(mapStateToProps)(MainComponent)
+
+//Constante for reset the stack
+const recapReset = StackActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'Recap' })],
+});
+
+//Constante for reset the stack
+const welcomeReset = StackActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'Welcome' })],
+});
+export default connect(mapStateToProps)(MainComponentWelcome)
