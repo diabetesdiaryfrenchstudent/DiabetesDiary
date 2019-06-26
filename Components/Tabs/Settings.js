@@ -68,7 +68,7 @@ class Settings extends React.Component {
   }
 
   render() {
-    {this._messageNotifications()}
+    
 
       return (
 
