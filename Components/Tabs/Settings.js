@@ -26,50 +26,35 @@ class Settings extends React.Component {
     </TouchableOpacity>
   );
 
+/**Change the display on the message notif bar if you check the box or not*/
   _messageNotifications = () => {
-    if (this.checkedNotif) {
+    if (this.state.checkedNotif) {
       return (<Text style={styles.TextInfos}>Show message notifications </Text>)
     } else {
       return (<Text style={styles.TextInfos}>Do not show message notifications </Text>)
     }
   }
 
+
+/**Change the display on the Bluetooth parameter bar if you check the box or not*/
   _BluetoothParam = () => {
-    if (this.checkedBluetooth) {
+    console.log(this.state.checkedBluetooth)
+    if (this.state.checkedBluetooth) {
       return (
-      <View style={styles.settingsBox}>
-          <Text style={{paddingLeft: 8}}> Device </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              {this._renderButton('Polymap',this.setState({visibleModal: Polymap}))}
-              {this._renderButton('Fora',this.setState({visibleModal: Fora}))}
-          </View>
-
-          <Modal isVisible={this.state.visibleModal === Polymap} onRequestClose={() => {this.setState({ visibleModal: null })}}>
-              <View style={styles.modalContent}>
-                  <Text style={styles.smallTitles}> Service name </Text>
-                  <Text>See later</Text>
-                  <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
-              </View>
-          </Modal>
-
-
-          <Modal isVisible={this.state.visibleModal === Fora} onRequestClose={() => {this.setState({ visibleModal: null })}}>
-              <View style={styles.modalContentUnits}>
-                  <Text style={styles.smallTitles}> Manual import </Text>
-                  <Text>See later</Text>
-                  <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
-              </View>
-          </Modal>
-      </View>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Text style={{paddingLeft: 8}}> Device : </Text>
+            <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: 8 })}> Polymap </Text>
+            <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: 9 })}> Fora </Text>
+        </View>
       )
     } else {
-      return (null)
+      return (
+        null
+      )
     }
   }
 
   render() {
-
-
       return (
 
         <View style={styles.main_container}>
@@ -81,15 +66,17 @@ class Settings extends React.Component {
               <Text style={styles.TextInfos}> Change your name, gender, focus area, goals..</Text>
             </TouchableOpacity>
               <Divider/>
-            <View style={styles.settingsBox}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <View style={{flexDirection: 'column'}}>
-                  <Text style={{paddingLeft: 8}}> Bluetooth </Text>
-                  <Text style={styles.TextInfos}> Support for transfering blood glucose values via Bluetooth </Text>
+            <View>
+              <View style={styles.settingsBox}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <View style={{flexDirection: 'column'}}>
+                    <Text style={{paddingLeft: 8}}> Bluetooth </Text>
+                    <Text style={styles.TextInfos}> Support for transfering blood glucose values via Bluetooth </Text>
+                  </View>
+                  <CheckBox checked={this.state.checkedBluetooth} onPress={() => this.setState({checkedBluetooth: !this.state.checkedBluetooth})} />
                 </View>
-                <CheckBox checked={this.state.checkedBluetooth} onPress={() => this.setState({checkedBluetooth: !this.state.checkedBluetooth})} />
-                {this._BluetoothParam()}
               </View>
+              {this._BluetoothParam()}
             </View>
             <Divider/>
             <TouchableOpacity style={styles.settingsBox} onPress={() => this.setState({ visibleModal: 2 })}>
@@ -196,6 +183,23 @@ class Settings extends React.Component {
               <Text style={styles.smallTitles}> Tracking app usage to help researchers </Text>
               <CheckBox  title='Enable' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={this.state.TrackingEnable} onPress={() => {this.setState({TrackingEnable: true}), this.setState({visibleModal:null})}}/>
               <CheckBox  title='Disable' checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={!this.state.TrackingEnable} onPress={() => {this.setState({TrackingEnable: false}), this.setState({visibleModal:null})}}/>
+              <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
+          </View>
+      </Modal>
+
+      <Modal isVisible={this.state.visibleModal === 8} onRequestClose={() => {this.setState({ visibleModal: null })}}>
+          <View style={styles.modalContent}>
+              <Text style={styles.smallTitles}> Polymap </Text>
+              <Text>See later</Text>
+              <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
+          </View>
+      </Modal>
+
+
+      <Modal isVisible={this.state.visibleModal === 9} onRequestClose={() => {this.setState({ visibleModal: null })}}>
+          <View style={styles.modalContent}>
+              <Text style={styles.smallTitles}> Flora </Text>
+              <Text>See later</Text>
               <Text style={styles.TextTouch} onPress={() => this.setState({ visibleModal: null })}> Annuler </Text>
           </View>
       </Modal>
