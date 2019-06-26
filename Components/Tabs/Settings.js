@@ -18,13 +18,6 @@ class Settings extends React.Component {
     TrackingEnable: true,
   };
 
-  _renderButton = (text, onPress) => (
-    <TouchableOpacity style={{flex:1}} onPress={onPress}>
-      <View style={styles.button}>
-        <Text style={styles.textButton}>{text}</Text>
-      </View>
-    </TouchableOpacity>
-  );
 
 /**Change the display on the message notif bar if you check the box or not*/
   _messageNotifications = () => {

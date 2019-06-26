@@ -14,21 +14,7 @@ class PersonalDataTools extends React.Component {
     text: null,
   };
 
-  _renderButton = (text, onPress) => (
-    <TouchableOpacity style={{flex:1}} onPress={onPress}>
-      <View style={styles.button}>
-        <Text style={styles.textButton}>{text}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-
-  _renderModalContent = () => (
-    <View style={styles.modalContent}>
-        <Text> Design modals </Text>
-        {this._renderButton('Close', () => this.setState({ visibleModal: null }))}
-    </View>
-  );
-
+/**Display a privacy warning when necessary*/
   _privacyWarning = () => {
     if (this.PrivacyWarn){
       this.setState({ visibleModal: 1 })
